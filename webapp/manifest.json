@@ -43,7 +43,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "MT.SMT_Managment.view.App",
+			"viewName": "MT.SMT_Managment.view.managementView",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -100,6 +100,13 @@
 					"target": [
 						"object"
 					]
+				},
+				{
+					"name": "RouteManagementView",
+					"pattern": "RouteManagementView",
+					"target": [
+						"TargetManagementView"
+					]
 				}
 			],
 			"targets": {
@@ -122,6 +129,16 @@
 				"notFound": {
 					"viewName": "NotFound",
 					"viewId": "notFound"
+				},
+				"TargetManagementView": {
+					"viewType": "XML",
+					"viewName": "managementView",
+					"controlId": "idmanagementView"
+				},
+				"dashboardView": {
+					"viewType": "XML",
+					"viewName": "dashboardView",
+					"controlId": "iddashboardView"
 				}
 			}
 		}

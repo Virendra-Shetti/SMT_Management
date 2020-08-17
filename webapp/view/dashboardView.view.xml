@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="MT.SMT_Managment.controller.dashboardView"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header=" Manage Activity of Management" subheader="Click"
+		press="onManagementCardClick">
+		<TileContent>
+			<ImageContent src="sap-icon://manager"/>
+		</TileContent>
+	</GenericTile>
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Leave and asset" subheader="Ckick"
+		press="onLeaveAssetCardClick">
+		<TileContent>
+			<ImageContent src="sap-icon://create-leave-request"/>
+		</TileContent>
+	</GenericTile>
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Employee Data base" subheader="Ckick"
+		press="onLeaveAssetCardClick">
+		<TileContent>
+			<ImageContent src="sap-icon://employee-lookup"/>
+		</TileContent>
+	</GenericTile>
+</mvc:View>

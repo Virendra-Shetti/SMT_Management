@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Enter details" id="fileUploader2">
+		<f:SimpleForm>
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
+				<l:content>
+					<VBox>
+						<Label id="lableName" text="Name:"/>
+						<Input id="fNameFId" required="true" width="100%"/>
+						<Toolbar>
+							<Button text="Add" press="onSaveVeg" id="btnVeg"></Button>
+							<Button type="Reject" text="Cancel" id="btnSaveFood" press="onCloseFragmentAddEmp"></Button>
+						</Toolbar>
+					</VBox>
+				</l:content>
+			</l:VerticalLayout>
+		</f:SimpleForm>
+	</Dialog>
+</core:FragmentDefinition>
