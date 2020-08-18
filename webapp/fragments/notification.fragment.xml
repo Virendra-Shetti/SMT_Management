@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified">
+	<ResponsivePopover title="Notifications" id="fileUploader1" contentWidth="200px" placement="Bottom">
+		<content>
+			<List items="{chart>/Sales}" class="notification">
+				<NotificationListItem title="{chart>DrugName}" description="{chart>Revenue}" showCloseButton="true" close="onItemClose"
+					press="onListItemPress">
+					<buttons>
+						<Button text="Accept" press="onAcceptPress"/>
+						<Button text="Reject" press="onRejectPress"/>
+					</buttons>
+				</NotificationListItem>
+			</List>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>
