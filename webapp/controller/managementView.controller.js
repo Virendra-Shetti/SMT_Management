@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/Fragment"
-], function (Controller, Fragment) {
+	"sap/ui/core/Fragment",
+	"sap/ui/model/json/JSONModel"
+], function (Controller, Fragment, JSONModel) {
 	"use strict";
 
 	return Controller.extend("MT.SMT_Managment.controller.managementView", {
@@ -13,6 +14,20 @@ sap.ui.define([
 		 */
 		onInit: function () {
 
+			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
+			// var mParameters = {
+			// 	success: function (odata, oRetrievedResult) {
+			// 		var oModel1 = new JSONModel(odata.results);
+			// 		debugger;
+
+			// 	},
+
+			// 	error: function (oError) {
+			// 		debugger;
+			// 	}
+			// };
+			// var oModel = new sap.ui.model.odata.ODataModel("sap/opu/odata/sap/ZEMP_MANAGEMENT_SRV");
+			// oModel.read("/EmployeeDetailSet", mParameters);
 		},
 
 		onPressNotification: function (oEvent) {
@@ -47,6 +62,10 @@ sap.ui.define([
 		onCloseFragmentAddEmp: function () {
 
 			this.empAddFragment.close();
+		},
+		onPressLogout: function () {
+
+			this.Router.navTo("RouteDashboardView");
 		}
 
 		/**

@@ -43,7 +43,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "MT.SMT_Managment.view.managementView",
+			"viewName": "MT.SMT_Managment.view.dashboardView",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -77,7 +77,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "MT.SMT_Managment.view",
-				"controlId": "app",
+				"controlId": "idDashboardView",
 				"controlAggregation": "pages",
 				"bypassed": {
 					"target": [
@@ -107,6 +107,20 @@
 					"target": [
 						"TargetManagementView"
 					]
+				},
+				{
+					"name": "RouteDashboardView",
+					"pattern": "RouteDashboardView",
+					"target": [
+						"TargetDashboardView"
+					]
+				},
+				{
+					"name": "RouteLeaveAssetView",
+					"pattern": "RouteLeaveAssetView",
+					"target": [
+						"TargetLeaveAssetView"
+					]
 				}
 			],
 			"targets": {
@@ -133,12 +147,16 @@
 				"TargetManagementView": {
 					"viewType": "XML",
 					"viewName": "managementView",
-					"controlId": "idmanagementView"
+					"controlId": "idDashboardView"
 				},
-				"dashboardView": {
+				"TargetDashboardView": {
 					"viewType": "XML",
 					"viewName": "dashboardView",
-					"controlId": "iddashboardView"
+					"controlId": "idDashboardView"
+				},
+				"TargetLeaveAssetView": {
+					"viewType": "XML",
+					"viewName": "leaveAndAssetView"
 				}
 			}
 		}
