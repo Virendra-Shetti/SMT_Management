@@ -1,6 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="MT.SMT_Managment.controller.dashboardView" xmlns:html="http://www.w3.org/1999/xhtml">
-	<App id="idDashboardView">
+	<App>
 		<pages>
 			<Page showHeader="false">
 				<content>
@@ -118,7 +118,7 @@
 								<Text text="Leave and asset" class="sapUiSmallMarginTop"/>
 							</VBox>
 							<VBox alignItems="Center">
-								<Avatar src="sap-icon://employee-lookup" displaySize="XL" backgroundColor="Accent10"/>
+								<Avatar src="sap-icon://employee-lookup" displaySize="XL" backgroundColor="Accent10" press="onDataBasePress"/>
 								<Text text="Employee Data base" class="sapUiSmallMarginTop"/>
 							</VBox>
 						</l:content>

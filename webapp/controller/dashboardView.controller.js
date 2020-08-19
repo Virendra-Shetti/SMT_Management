@@ -1,5 +1,6 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
+/*	"sap/ui/core/mvc/Controller",*/
+		"./BaseController"
 ], function (Controller) {
 	"use strict";
 
@@ -12,16 +13,20 @@ sap.ui.define([
 		 */
 		onInit: function () {
 
-			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
+		
 		},
 		onManagementCardClick: function () {
 			debugger;
-			this.Router.navTo("RouteManagementView");
+			this.getRouter().navTo("RouteManagementView");
 		},
 		onLeaveAsset: function () {
 
-			this.Router.navTo("RouteLeaveAssetView");
+			this.getRouter().navTo("RouteLeaveAssetView");
 		},
+		onDataBasePress :  function () {
+
+			this.getRouter().navTo("worklist");
+		}
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).
