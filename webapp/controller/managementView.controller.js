@@ -83,7 +83,7 @@ sap.ui.define([
 				}
 			},*/
 		onSave: function (oEvent) {
-			debugger;
+			
 			var myFragId = this.createId("fileUploader2");
 			// Below is an array to store the ids for validation purpose.
 			var lSid = ["fNameFId", "lNameFId", "empAdddepFId", "empAddposFId", "empAddEmailId", "empAddStareId", "empAddPassId"];
