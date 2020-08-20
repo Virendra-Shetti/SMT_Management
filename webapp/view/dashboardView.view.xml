@@ -41,122 +41,304 @@
 					<!--<core:Fragment fragmentName="MT.SMT_Managment.fragments.Anniversary" type="XML"/>-->
 				</content>
 				<Toolbar width="100%" height="1px" class="sapULargeMarginTop"/>
-				<f:Card class="sapUiMediumMargin" width="22em">
+				<f:Card class="sapUiSmallMargin" width="26em">
 					<f:header>
 						<card:Header title="{i18n>totalNumberofEmployee}"
 							iconSrc="https://toppng.com/uploads/preview/roup-of-people-in-a-formation-free-icon-svg-psd-png-employee-engagement-stats-11563001272via6lcn5i3.png"/>
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<List items="{DOB>/Employee}">
-								<CustomListItem >
-									<HBox alignContent="Center" alignItems="Center" justifyContent="Center">
-										<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<!--<core:Icon src="{DOB>image}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
-										<Text text="{DOB>endDate}" class="sapUiSmallMarginEnd"/>
-										<Button text="Select"/>
-									</HBox>
-								</CustomListItem>
-							</List>
+							<Table items="{DOB>/Employee}" width="100%">
+								<columns>
+									<Column>
+										<Text text="image"/>
+									</Column>
+									<Column>
+										<Text text="EmpId"/>
+									</Column>
+									<Column >
+										<Text text="empName"/>
+									</Column>
+									<Column>
+										<Text text="Department"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>Department}" class="sapUiSmallMarginEnd"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
 						</ScrollContainer>
 					</f:content>
 				</f:Card>
-				<f:Card class="sapUiMediumMargin" width="22em">
+				<f:Card class="sapUiSmallMargin" width="26em">
 					<f:header>
 						<card:Header title="{i18n>totalNumberofEmployeePresent}" iconSrc="sap-icon://employee-approvals"/>
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<List items="{DOB>/Employee}">
-								<CustomListItem >
-									<HBox alignContent="Center" alignItems="Center" justifyContent="Center">
-										<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
-										<Text text="{DOB>endDate}" class="sapUiSmallMarginEnd"/>
-										<Button text="Select"/>
-									</HBox>
-								</CustomListItem>
-							</List>
+							<Table items="{DOB>/Employee}" width="100%">
+								<columns>
+									<Column>
+										<Text text="image"/>
+									</Column>
+									<Column>
+										<Text text="EmpId"/>
+									</Column>
+									<Column >
+										<Text text="empName"/>
+									</Column>
+									<Column>
+										<Text text="Department"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="3em" height="3em"/>-->
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>Department}" class="sapUiSmallMarginEnd"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
 						</ScrollContainer>
 					</f:content>
 				</f:Card>
-				<f:Card class="sapUiMediumMargin" width="22em">
+				<f:Card class="sapUiSmallMargin" width="26em">
 					<f:header>
 						<card:Header title="{i18n>totalNumberofEmployeeOnLeave}" iconSrc="https://cdn.onlinewebfonts.com/svg/img_350034.png"/>
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<List items="{DOB>/Employee}">
-								<CustomListItem >
-									<HBox alignContent="Center" alignItems="Center" justifyContent="Center">
-										<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
-										<Text text="{DOB>endDate}" class="sapUiSmallMarginEnd"/>
-										<Button text="Select"/>
-									</HBox>
-								</CustomListItem>
-							</List>
+							<!--<List items="{DOB>/Employee}">-->
+							<!--<CustomListItem >-->
+							<!--	<HBox alignContent="Center" alignItems="Center" justifyContent="Center">-->
+							<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
+							<!--		<Image src="{DOB>image}" width="2em" height="2em" class="sapUiMediumMarginEnd"/>-->
+							<!--		<Label text="{DOB>EmpId}" class="sapUiSmallMarginEnd"/>-->
+							<!--		<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>-->
+							<!--		<Label text="{DOB>Department}" class="sapUiSmallMarginEnd"/>-->
+							<Table items="{DOB>/Employee}" width="100%">
+								<columns>
+									<Column>
+										<Text text="image"/>
+									</Column>
+									<Column>
+										<Text text="EmpId"/>
+									</Column>
+									<Column >
+										<Text text="empName"/>
+									</Column>
+									<Column>
+										<Text text="Department"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}"/>
+											<Label text="{DOB>empName}"/>
+											<Label text="{DOB>Department}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<!--		</HBox>-->
+							<!--	</CustomListItem>-->
+							<!--</List>-->
 						</ScrollContainer>
 					</f:content>
 				</f:Card>
-				<f:Card class="sapUiMediumMargin" width="22em">
+				<f:Card class="sapUiSmallMargin" width="26em">
 					<f:header>
 						<card:Header title="{i18n>totalNumberofEmployeeRelieving}"
 							iconSrc="https://img.pngio.com/door-exit-leave-out-work-icon-leave-work-png-512_512.png"/>
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<List items="{DOB>/Relieving}">
-								<CustomListItem >
-									<HBox alignContent="Center" alignItems="Center" justifyContent="Center">
-										<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
-										<Text text="{DOB>endDate}" class="sapUiSmallMarginEnd"/>
-										<Button text="Select"/>
-									</HBox>
-								</CustomListItem>
-							</List>
+							<Table id="relievingCardId" items="{DOB>/Relieving}" width="100%">
+								<columns>
+									<Column>
+										<Text text="image"/>
+									</Column>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column width="8em">
+										<Text text="endDate"/>
+									</Column>
+									<Column>
+										<Text text="ATN"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}"/>
+											<DatePicker value="{DOB>endDate}" editable="false"/>
+											<Button text="Add News" press="onClickRelievingButton"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
 						</ScrollContainer>
 					</f:content>
 				</f:Card>
-				<f:Card class="sapUiMediumMargin" width="22em">
+				<f:Card class="sapUiSmallMargin" width="26em">
 					<f:header>
 						<card:Header title="{i18n>totalNumberofEmployeeanniversary}"
 							iconSrc="https://cdn.iconscout.com/icon/premium/png-512-thumb/first-year-anniversary-594871.png"/>
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<List items="{DOB>/anualData}">
-								<CustomListItem >
-									<HBox alignContent="Center" alignItems="Center" justifyContent="Center">
-										<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
-										<Text text="{DOB>endDate}" class="sapUiSmallMarginEnd"/>
-										<Button text="Select"/>
-									</HBox>
-								</CustomListItem>
-							</List>
+							<!--<List items="{DOB>/anualData}">-->
+							<!--	<CustomListItem >-->
+							<!--		<HBox alignContent="Center" alignItems="Center" justifyContent="Center">-->
+							<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
+							<!--			<Image src="{DOB>image}" width="2em" height="2em" class="sapUiMediumMarginEnd"/>-->
+							<!--			<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>-->
+							<!--			<DatePicker value="{DOB>startDate}" class="sapUiSmallMarginEnd" width="7em" editable="false"/>-->
+							<!--			<Button text="Add to News" width="6em"/>-->
+							<!--		</HBox>-->
+							<!--	</CustomListItem>-->
+							<!--</List>-->
+							<Table items="{DOB>/anualData}" width="100%">
+								<columns>
+									<Column>
+										<Text text="image"/>
+									</Column>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column width="8em">
+										<Text text="startDate"/>
+									</Column>
+									<Column>
+										<Text text="ATN"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}"/>
+											<DatePicker value="{DOB>startDate}" editable="false"/>
+											<Button text="Add to News"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
 						</ScrollContainer>
 					</f:content>
 				</f:Card>
-				<f:Card class="sapUiMediumMargin" width="22em">
+				<f:Card class="sapUiSmallMargin" width="26em">
 					<f:header>
 						<card:Header title="{i18n>totalNumberofEmployeeBirthdays}"
 							iconSrc="https://www.pinclipart.com/picdir/middle/0-7698_birthday-cake-icon-free-png-clipart-computer-icons.png"/>
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<List items="{DOB>/birthDay}">
-								<CustomListItem >
-									<HBox alignContent="Center" alignItems="Center" justifyContent="Center">
-										<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
-										<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
-										<Text text="{DOB>endDate}" class="sapUiSmallMarginEnd"/>
-										<Button text="Select"/>
-									</HBox>
-								</CustomListItem>
-							</List>
+							<!--<List items="{DOB>/birthDay}">-->
+							<!--	<CustomListItem >-->
+							<!--		<HBox alignContent="Center" alignItems="Center" justifyContent="Center">-->
+							<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
+							<!--			<Image src="{DOB>image}" width="2em" height="2em" class="sapUiMediumMarginEnd"/>-->
+							<!--			<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>-->
+							<!--			<DatePicker value="{DOB>date}" class="sapUiSmallMarginEnd" width="7em" editable="false"/>-->
+							<!--			<Button text="Add to News" width="6em"/>-->
+							<!--		</HBox>-->
+							<!--	</CustomListItem>-->
+							<!--</List>-->
+							<Table id="birthdayCardId" items="{DOB>/birthDay}" width="100%">
+								<columns>
+									<Column>
+										<Text text="image"/>
+									</Column>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column width="8em">
+										<Text text="DOB"/>
+									</Column>
+									<Column>
+										<Text text="ATN"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}"/>
+											<DatePicker value="{DOB>date}" editable="false"/>
+											<Button text="Add to News"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ScrollContainer>
+					</f:content>
+				</f:Card>
+				<f:Card class="sapUiSmallMargin" width="26em">
+					<f:header>
+						<card:Header title="{Events}"
+							iconSrc="https://www.pinclipart.com/picdir/middle/0-7698_birthday-cake-icon-free-png-clipart-computer-icons.png"/>
+					</f:header>
+					<f:content>
+						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
+							<!--<List items="{DOB>/birthDay}">-->
+							<!--	<CustomListItem >-->
+							<!--		<HBox alignContent="Center" alignItems="Center" justifyContent="Center">-->
+							<!--<core:Icon src="sap-icon://employee" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"/>-->
+							<!--			<Image src="{DOB>image}" width="2em" height="2em" class="sapUiMediumMarginEnd"/>-->
+							<!--			<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>-->
+							<!--			<DatePicker value="{DOB>date}" class="sapUiSmallMarginEnd" width="7em" editable="false"/>-->
+							<!--			<Button text="Add to News" width="6em"/>-->
+							<!--		</HBox>-->
+							<!--	</CustomListItem>-->
+							<!--</List>-->
+							<Table items="{DOB>/Events}" width="100%">
+								<columns>
+									<Column>
+										<Text text="EmpId"/>
+									</Column>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column width="8em">
+										<Text text="Date"/>
+									</Column>
+									<Column>
+										<Text text="Enent Name"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Navigation" press="treeTable">
+										<cells>
+											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
+											<Label text="{DOB>EmpId}"/>
+											<Label text="{DOB>name}"/>
+											<DatePicker value="{DOB>date}" editable="false"/>
+											<Label text="{DOB>eveName}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
 						</ScrollContainer>
 					</f:content>
 				</f:Card>

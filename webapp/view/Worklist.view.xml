@@ -1,7 +1,8 @@
 <mvc:View controllerName="MT.SMT_Managment.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic">
 	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
 		<semantic:titleHeading>
-			<Title text="{i18n>worklistTitle}" level="H2"/>
+			<Title text="Management Tool1" level="H2"/>
+			<Button icon="sap-icon://log" press="onPressLogout"/>
 		</semantic:titleHeading>
 		<semantic:content>
 			<Table id="table" width="auto" items="{ path: '/Employees', sorter: { path: 'EmployeeID', descending: false } }"

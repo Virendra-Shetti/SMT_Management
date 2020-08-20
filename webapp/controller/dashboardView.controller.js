@@ -27,7 +27,7 @@ sap.ui.define([
 				if (month == "08") {
 					birthDay.push(DOB[i]);
 				}
-				debugger;
+				// debugger;
 				var year = DOB[i].endDate.slice(6);
 				if (year == "2020") {
 					Relieving.push(DOB[i]);
@@ -38,7 +38,7 @@ sap.ui.define([
 				}
 
 			}
-			debugger;
+			// debugger;
 			this.getOwnerComponent().getModel("DOB").setProperty("/anualData", anualData);
 			// this.getView().byId("dashboardAnniversaryEmpButtonId").setProperty("text", anualData.length);
 
@@ -50,12 +50,54 @@ sap.ui.define([
 			// this.getView().byId("ThisMonthBirthDayButtonId").setProperty("text", birthDay.length);
 		},
 		onManagementCardClick: function () {
-			debugger;
+			// debugger;
 			this.Router.navTo("RouteManagementView");
 		},
 		onLeaveAsset: function () {
 
 			this.Router.navTo("RouteLeaveAssetView");
+		},
+		treeTable: function (oEvent) {
+			debugger;
+
+			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
+
+			var tempNewsCardModel = new sap.ui.model.json.JSONModel();
+			this.getOwnerComponent().setModel(tempNewsCardModel, "newData");
+			var tempNewsCardArray = [];
+			tempNewsCardArray.push(newData);
+			var dataa = this.getOwnerComponent().getModel("tempNewsCardModel");
+			var birthdayFragmentId = this.createId("birthdayFragmentId");
+			if (!this.birthdayFragment) {
+				this.birthdayFragment = new sap.ui.xmlfragment(this.getView().getId(birthdayFragmentId), "MT.SMT_Managment.fragments.addEvents",
+					this);
+				this.getView().addDependent(this.birthdayFragment);
+			}
+			this.birthdayFragment.open();
+			// var oPath = oEvent.getSource().oBindingContexts.DOB.sPath;
+			// var oForm = this.getView().byId("idListForm");
+
+			// oForm.bindElement(oPath);
+
+		},
+		onClickRelievingButton: function (oEvent) {
+			debugger;
+
+			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
+			var tempNewsCardModel = new sap.ui.model.json.JSONModel();
+			this.getOwnerComponent().setModel(tempNewsCardModel, "/Event");
+			var tempNewsCardArray = [];
+			tempNewsCardArray.push(newData);
+			// this.getOwnerComponent().getModel("DOB").setProperty("Event", tempNewsCardArray);
+
+			this.getOwnerComponent().getModel("DOB").setProperty("/Event", tempNewsCardArray);
+			var birthdayFragmentId = this.createId("birthdayFragmentId");
+			if (!this.birthdayFragment) {
+				this.birthdayFragment = new sap.ui.xmlfragment(this.getView().getId(birthdayFragmentId), "MT.SMT_Managment.fragments.addEvents",
+					this);
+				this.getView().addDependent(this.birthdayFragment);
+			}
+			this.birthdayFragment.open();
 		},
 		onPressThisMonthBirthDay: function () {
 			var birthdayFragmentId = this.createId("birthdayFragmentId");
@@ -77,15 +119,31 @@ sap.ui.define([
 			this.RelievingEmpFragment.open();
 		},
 		onPressAnniversaryEmp: function () {
-				var AnniversaryEmpFragmentId = this.createId("TAnniversaryEmpFragmentId");
-				if (!this.AnniversaryEmpFragment) {
-					this.AnniversaryEmpFragment = new sap.ui.xmlfragment(this.getView().getId(AnniversaryEmpFragmentId),
-						"MT.SMT_Managment.fragments.Anniversary",
-						this);
-					this.getView().addDependent(this.AnniversaryEmpFragment);
-				}
+			var AnniversaryEmpFragmentId = this.createId("TAnniversaryEmpFragmentId");
+			if (!this.AnniversaryEmpFragment) {
+				this.AnniversaryEmpFragment = new sap.ui.xmlfragment(this.getView().getId(AnniversaryEmpFragmentId),
+					"MT.SMT_Managment.fragments.Anniversary",
+					this);
+				this.getView().addDependent(this.AnniversaryEmpFragment);
+			}
 
-				this.AnniversaryEmpFragment.open();
+			this.AnniversaryEmpFragment.open();
+		},
+		onClickAddEvents: function () {
+
+				var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+				var EmpId = this.getView().byId("addEventsEmpFragementId").getValue();
+				var name = this.getView().byId("addEventsEmpFragementName").getValue();
+				var date = this.getView().byId("addEventsEmpFragementDate").getValue();
+				var eveName = this.getView().byId("addEventsEmpFragementEvent").getValue();
+				var obj = {
+					EmpId: EmpId,
+					name: name,
+					date: date,
+					eveName: eveName
+				};
+				oModelEvent.push(obj);
+				this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
 			}
 			/**
 			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
