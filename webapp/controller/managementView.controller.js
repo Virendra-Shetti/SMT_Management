@@ -52,19 +52,24 @@ sap.ui.define([
 
 		},
 		onPressAddEmp: function () {
-			// debugger;
-			var emiFragmentId = this.createId("emiFragmentId");
-			if (!this.empAddFragment) {
-				this.empAddFragment = new sap.ui.xmlfragment(this.getView().getId(emiFragmentId), "MT.SMT_Managment.fragments.addEmp",
-					this);
-				this.getView().addDependent(this.empAddFragment);
-			}
+			debugger;
+			this._getFragement().open();
 
-			this.empAddFragment.open();
+			
+		},
+		_getFragement: function () {
+			if (!this._oDailog) { // chekking if the dialog box is = null or undefined, if yes then creating the object of the fragment.
+				var oview = this.getView(); // getting the view object.
+				var oID = this.createId("idFragment1"); //  Creating a Dynamic id for the fragment.
+				this._oDailog = sap.ui.xmlfragment(oID, "MT.SMT_Managment.fragments.addEmp", this); // creating the fragment object.
+
+				oview.addDependent(this._oDailog); // Adding the fragment to the controller.
+			}
+			return this._oDailog;
 		},
 		onCloseFragmentAddEmp: function () {
 
-			this.empAddFragment.close();
+			this._getFragement().close();
 		},
 		onPressLogout: function () {
 
@@ -82,16 +87,16 @@ sap.ui.define([
 					return false;
 				}
 			},*/
-		onSave: function (oEvent) {
-			
-			var myFragId = this.createId("fileUploader2");
+		onSave: function () {
+			debugger;
+			var myFragId = this.createId("idFragment1");
 			// Below is an array to store the ids for validation purpose.
 			var lSid = ["fNameFId", "lNameFId", "empAdddepFId", "empAddposFId", "empAddEmailId", "empAddStareId", "empAddPassId"];
 			// Below is an array to stroe the data of the fields for the validation.......
 			var container = ["cfNameFId", "clNameFId", "cempAdddepFId", "cempAddposFId", "cempAddEmailId", "cempAddStareId", "cempAddPassId"];
 			//  a loop to store the data into the data array.............................
 			for (var i = 0; i < lSid.length; i++) {
-				container[i] = Fragment.byId(myFragId, lSid[i]).getValue();
+				container[i] = sap.ui.core.Fragment.byId(myFragId, lSid[i]).getValue();
 			}
 			var dataError = [];
 			var dataValid = [];
@@ -107,6 +112,8 @@ sap.ui.define([
 					h++;
 				}
 			}
+			new validator().errorValidator(myFragId,dataError);
+			new validator().validFields(myFragId,dataValid);                
 		},
 
 		onFname: function (oEvent) {

@@ -4,15 +4,20 @@ sap.ui.define([
 ], function (mockserver, MessageBox) {
 	"use strict";
 
-	var aMockservers = [];
+//	var aMockservers = [];
 
 	// initialize the mock server
-	aMockservers.push(mockserver.init());
+/*	aMockservers.push(mockserver.init());*/
 
-	Promise.all(aMockservers).catch(function (oError) {
+	/*Promise.all(aMockservers).catch(function (oError) {
 		MessageBox.error(oError.message);
-	}).finally(function () {
+	}).finally(function () {*/
 		// initialize the embedded component on the HTML page
-		sap.ui.require(["sap/ui/core/ComponentSupport"]);
-	});
+	/*	sap.ui.require(["sap/ui/core/ComponentSupport"]);
+	});*/
+	
+		mockserver.init();
+
+	// initialize the embedded component on the HTML page
+	sap.ui.require(["sap/ui/core/ComponentSupport"]);
 });

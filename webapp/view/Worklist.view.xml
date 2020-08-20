@@ -4,7 +4,7 @@
 			<Title text="{i18n>worklistTitle}" level="H2"/>
 		</semantic:titleHeading>
 		<semantic:content>
-			<Table id="table" width="auto" items="{ path: '/Employees', sorter: { path: 'EmployeeID', descending: false } }"
+			<Table id="table" width="auto" items="{ path: '/Employee', sorter: { path: 'EmployeeID', descending: false } }"
 				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
 				updateFinished=".onUpdateFinished">
 				<headerToolbar>
@@ -25,12 +25,24 @@
 					<Column id="unitNumberColumn" hAlign="End">
 						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
 					</Column>
+						<Column id="unitNameColumn" hAlign="End">
+						<Text text="{i18n>tableUnitNameColumnTitle}" id="unitNamerColumnTitle"/>
+					</Column>
+						<Column id="unitDOBColumn" hAlign="End">
+						<Text text="{i18n>tableUnitDOBColumnTitle}" id="unitDOBColumnTitle"/>
+					</Column>
+						<Column id="unitAddressColumn" hAlign="End">
+						<Text text="{i18n>tableUnitAddressColumnTitle}" id="unitAddressColumnTitle"/>
+					</Column>
 				</columns>
 				<items>
 					<ColumnListItem type="Navigation" press=".onPress">
 						<cells>
 							<ObjectIdentifier title="{EmployeeID}"/>
-							<ObjectNumber number="{ path: 'ReportsTo', formatter: '.formatter.numberUnit' }" unit="{BirthDate}"/>
+							<ObjectNumber number="{ path: 'Salary', formatter: '.formatter.numberUnit' }" unit="{Salary}"/>
+							<ObjectAttribute text="{FirstName}" />
+							<ObjectAttribute text="{Age}" />
+						<!--	<ObjectAttribute text="{Address}" />-->
 						</cells>
 					</ColumnListItem>
 				</items>

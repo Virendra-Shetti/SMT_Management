@@ -5,7 +5,7 @@
 			<Title text="{EmployeeID}" level="H2"/>
 		</semantic:titleHeading>
 		<semantic:headerContent>
-			<ObjectNumber number="{ path: 'ReportsTo', formatter: '.formatter.numberUnit' }" unit="{BirthDate}"/>
+			<ObjectNumber number="{ path: 'PostalCode', formatter: '.formatter.numberUnit' }" unit="{PostalCode}"/>
 		</semantic:headerContent>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>

@@ -61,8 +61,28 @@ sap.ui.define([
 					
 				});
 			
-			}
+			},
+			 errorValidator: function(frgID, fielId){
+    	debugger;
+    		for(var i=0;i<fielId.length;i++)
+    		{
+    			sap.ui.core.Fragment.byId(frgID, fielId[i]).setValueState("Error");
+    				sap.ui.core.Fragment.byId(frgID, fielId[0]).setValueState("Error").focus();
+    				if(fielId[i] !== "idServicParts"){
+    		sap.ui.core.Fragment.byId(frgID, fielId[i]).setValueState("Error").setValueStateText("This is Mandatory");
+    				}
+    				}
+    },
+    validFields: function(frgID, vfilds){
+    	debugger;
+    		for(var i=0;i<vfilds.length;i++)
+    		{
+    			sap.ui.core.Fragment.byId(frgID, vfilds[i]).setValueState("None");
+    		sap.ui.core.Fragment.byId(frgID, vfilds[i]).setValueState("None").setValueStateText("");
+    }
 
+		}
+			
 		});
 
 	});
