@@ -116,7 +116,7 @@ sap.ui.define([
 				var sQuery = oEvent.getParameter("query");
 
 				if (sQuery && sQuery.length > 0) {
-					aTableSearchState = [new Filter("EmployeeID", FilterOperator.EQ, sQuery)];
+					aTableSearchState = [new Filter("EmpId", FilterOperator.EQ, sQuery)];
 				}
 				this._applySearch(aTableSearchState);
 			}
@@ -143,9 +143,11 @@ sap.ui.define([
 		 * @param {sap.m.ObjectListItem} oItem selected Item
 		 * @private
 		 */
+
 		_showObject: function (oItem) {
+
 			this.getRouter().navTo("object", {
-				objectId: oItem.getBindingContext().getProperty("EmployeeID")
+				objectId: oItem.getBindingContext().getProperty("EmpId")
 			});
 		},
 

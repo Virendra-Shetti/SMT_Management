@@ -1,18 +1,27 @@
-<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
-	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
-		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
-			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
-			Namespace="NorthwindModel">
-			<EntityType Name="Employee">
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0"
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="NerdMeetup.Models" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+			<EntityType Name="EmployeeType">
 				<Key>
-					<PropertyRef Name="EmployeeID"/>
+					<PropertyRef Name="EmpId"/>
 				</Key>
-				<Property xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="EmployeeID" Type="Edm.Int32" Nullable="false"
+				<Property xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="EmpId" Type="Edm.Int32" Nullable="false"
 					p6:StoreGeneratedPattern="Identity"/>
-				<Property Name="FirstName" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true"/>
-				<Property Name="Age" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
-				<Property Name="Salary" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
-				<Property Name="Working" Type="Edm.Boolean" MaxLength="Max" FixedLength="false" Unicode="true"/>
+				<Property Name="empName" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true"/>
+				<Property Name="Department" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
+				<Property Name="Email" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="startDate" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="endDate" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="date" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="image" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false"/>
+				<Property Name="Addre" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
+			
+			
+
 				<!--<NavigationProperty Name="Employees1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees1" FromRole="Employees"/>
 			<NavigationProperty Name="Employee1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees" FromRole="Employees1"/>
 			<NavigationProperty Name="Orders" Relationship="NorthwindModel.FK_Orders_Employees" ToRole="Orders" FromRole="Employees"/>
@@ -20,85 +29,10 @@
 			</EntityType>
 			<ComplexType Name="LocationDetail"/>
 			<EntityContainer Name="NerdMeetups" m:IsDefaultEntityContainer="true">
-				<EntitySet Name="Employee" EntityType="NerdMeetup.Models.Employee"/>
-				<FunctionImport Name="FindUpcomingMeetups" EntitySet="Emp" ReturnType="Collection(NerdMeetup.Models.Employee)" m:HttpMethod="GET"/>
-			</EntityContainer>
-		</Schema>
-		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
-			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
-			Namespace="ODataWeb.Northwind.Model">
-			<EntityContainer xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="NorthwindEntities" p7:LazyLoadingEnabled="true"
-				m:IsDefaultEntityContainer="true">
-				<EntitySet Name="Categories" EntityType="NorthwindModel.Category"/>
-				<EntitySet Name="CustomerDemographics" EntityType="NorthwindModel.CustomerDemographic"/>
-				<EntitySet Name="Customers" EntityType="NorthwindModel.Customer"/>
-				<EntitySet Name="Employees" EntityType="NorthwindModel.Employee"/>
-				<EntitySet Name="Order_Details" EntityType="NorthwindModel.Order_Detail"/>
-				<EntitySet Name="Orders" EntityType="NorthwindModel.Order"/>
-				<EntitySet Name="Products" EntityType="NorthwindModel.Product"/>
-				<EntitySet Name="Regions" EntityType="NorthwindModel.Region"/>
-				<EntitySet Name="Shippers" EntityType="NorthwindModel.Shipper"/>
-				<EntitySet Name="Suppliers" EntityType="NorthwindModel.Supplier"/>
-				<EntitySet Name="Territories" EntityType="NorthwindModel.Territory"/>
-				<EntitySet Name="Alphabetical_list_of_products" EntityType="NorthwindModel.Alphabetical_list_of_product"/>
-				<EntitySet Name="Category_Sales_for_1997" EntityType="NorthwindModel.Category_Sales_for_1997"/>
-				<EntitySet Name="Current_Product_Lists" EntityType="NorthwindModel.Current_Product_List"/>
-				<EntitySet Name="Customer_and_Suppliers_by_Cities" EntityType="NorthwindModel.Customer_and_Suppliers_by_City"/>
-				<EntitySet Name="Invoices" EntityType="NorthwindModel.Invoice"/>
-				<EntitySet Name="Order_Details_Extendeds" EntityType="NorthwindModel.Order_Details_Extended"/>
-				<EntitySet Name="Order_Subtotals" EntityType="NorthwindModel.Order_Subtotal"/>
-				<EntitySet Name="Orders_Qries" EntityType="NorthwindModel.Orders_Qry"/>
-				<EntitySet Name="Product_Sales_for_1997" EntityType="NorthwindModel.Product_Sales_for_1997"/>
-				<EntitySet Name="Products_Above_Average_Prices" EntityType="NorthwindModel.Products_Above_Average_Price"/>
-				<EntitySet Name="Products_by_Categories" EntityType="NorthwindModel.Products_by_Category"/>
-				<EntitySet Name="Sales_by_Categories" EntityType="NorthwindModel.Sales_by_Category"/>
-				<EntitySet Name="Sales_Totals_by_Amounts" EntityType="NorthwindModel.Sales_Totals_by_Amount"/>
-				<EntitySet Name="Summary_of_Sales_by_Quarters" EntityType="NorthwindModel.Summary_of_Sales_by_Quarter"/>
-				<EntitySet Name="Summary_of_Sales_by_Years" EntityType="NorthwindModel.Summary_of_Sales_by_Year"/>
-				<AssociationSet Name="FK_Products_Categories" Association="NorthwindModel.FK_Products_Categories">
-					<End Role="Categories" EntitySet="Categories"/>
-					<End Role="Products" EntitySet="Products"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Orders_Customers" Association="NorthwindModel.FK_Orders_Customers">
-					<End Role="Customers" EntitySet="Customers"/>
-					<End Role="Orders" EntitySet="Orders"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Employees_Employees" Association="NorthwindModel.FK_Employees_Employees">
-					<End Role="Employees" EntitySet="Employees"/>
-					<End Role="Employees1" EntitySet="Employees"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Orders_Employees" Association="NorthwindModel.FK_Orders_Employees">
-					<End Role="Employees" EntitySet="Employees"/>
-					<End Role="Orders" EntitySet="Orders"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Order_Details_Orders" Association="NorthwindModel.FK_Order_Details_Orders">
-					<End Role="Orders" EntitySet="Orders"/>
-					<End Role="Order_Details" EntitySet="Order_Details"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Order_Details_Products" Association="NorthwindModel.FK_Order_Details_Products">
-					<End Role="Products" EntitySet="Products"/>
-					<End Role="Order_Details" EntitySet="Order_Details"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Orders_Shippers" Association="NorthwindModel.FK_Orders_Shippers">
-					<End Role="Shippers" EntitySet="Shippers"/>
-					<End Role="Orders" EntitySet="Orders"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Products_Suppliers" Association="NorthwindModel.FK_Products_Suppliers">
-					<End Role="Suppliers" EntitySet="Suppliers"/>
-					<End Role="Products" EntitySet="Products"/>
-				</AssociationSet>
-				<AssociationSet Name="FK_Territories_Region" Association="NorthwindModel.FK_Territories_Region">
-					<End Role="Region" EntitySet="Regions"/>
-					<End Role="Territories" EntitySet="Territories"/>
-				</AssociationSet>
-				<AssociationSet Name="CustomerCustomerDemo" Association="NorthwindModel.CustomerCustomerDemo">
-					<End Role="CustomerDemographics" EntitySet="CustomerDemographics"/>
-					<End Role="Customers" EntitySet="Customers"/>
-				</AssociationSet>
-				<AssociationSet Name="EmployeeTerritories" Association="NorthwindModel.EmployeeTerritories">
-					<End Role="Employees" EntitySet="Employees"/>
-					<End Role="Territories" EntitySet="Territories"/>
-				</AssociationSet>
+
+				<EntitySet Name="Employee" EntityType="NerdMeetup.Models.EmployeeType"/>
+				<FunctionImport Name="FindUpcomingMeetups" EntitySet="Emp" ReturnType="Collection(NerdMeetup.Models.EmployeeType)" m:HttpMethod="GET"/>
+
 			</EntityContainer>
 		</Schema>
 	</edmx:DataServices>

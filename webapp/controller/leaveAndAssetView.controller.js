@@ -1,9 +1,11 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"./BaseController",
+	"sap/ui/core/mvc/Controller",
+	"sap/ui/core/routing/History"
+], function (BaseController,Controller,History) {
 	"use strict";
 
-	return Controller.extend("MT.SMT_Managment.controller.leaveAndAssetView", {
+	return BaseController.extend("MT.SMT_Managment.controller.leaveAndAssetView", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -12,10 +14,16 @@ sap.ui.define([
 		 */
 		onInit: function () {
 
-			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
+		
 		},
 		onPressLogout: function () {
-				this.Router.navTo("RouteDashboardView");
+				var sPreviousHash = History.getInstance().getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				history.go(-1);
+			} else {
+				this.getRouter().navTo("RouteDashboardView", {}, true);
+			}
 			}
 			/**
 			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

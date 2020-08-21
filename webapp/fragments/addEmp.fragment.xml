@@ -6,29 +6,33 @@
 				<l:content>
 					<VBox>
 						<Label text="EmpId:"/>
-						<Input id="empAddFId" required="true" width="100%" editable="false"/>
+						<Input id="empAddFId" required="true" width="100%" liveChange="onEmpId" editable="false"/>
 						<Label text="FName:"/>
-						<Input id="fNameFId" required="true" width="100%"/>
+
+						<Input id="fNameFId" required="true" width="100%" liveChange="onFname"/>
 						<Label text="LName:"/>
-						<Input id="lNameFId" required="true" width="100%"/>
+						<Input id="lNameFId" required="true" width="100%" liveChange="onLname"/>
+
 						<Label text="Department:"/>
-						<Input id="empAdddepFId" required="true" width="100%"/>
+						<Input id="empAdddepFId" required="true" width="100%" liveChange="onDepart"/>
 						<Label text="Employee Pos:"/>
-						<Input id="empAddposFId" required="true" width="100%"/>
+						<Input id="empAddposFId" required="true" width="100%" liveChange="onPos"/>
 						<Label text="Email:"/>
-						<Input id="empAddEmailId" required="true" width="100%"/>
+
+						<Input id="empAddEmailId" required="true" width="100%"  change="onEmail"/>
 						<Label text="DOB:"/>
 						<DatePicker id="empAddDOBId" placeholder="Enter Date ..." navigate="handleChangeDOB" class="sapUiSmallMarginBottom"/>
 						<Label text="Starte date:"/>
 						<DatePicker id="empAddStareId" placeholder="Enter Date ..." navigate="handleChangeStartDate" change="onchangeStartDate"
 							class="sapUiSmallMarginBottom"/>
 						<Label text="Starte date:"/>
-						<DatePicker id="empAddEndId" placeholder="Enter Date ..." editable="false" class="sapUiSmallMarginBottom"/>
+						<DatePicker id="empAddEndId" placeholder="Enter Date ..." change="handleChange" editable="false" class="sapUiSmallMarginBottom"/>
 						<Label text="Password:"/>
 						<Input id="empAddPassId" required="true" width="100%" editable="false"/>
 						<Toolbar>
 							<Button text="Add" press="onAddEmpClick" id="btnAddEmp"></Button>
 							<Button type="Reject" text="Cancel" press="onCloseFragmentAddEmp"></Button>
+
 						</Toolbar>
 					</VBox>
 				</l:content>

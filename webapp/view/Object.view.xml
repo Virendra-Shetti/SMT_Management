@@ -4,9 +4,27 @@
 		<semantic:titleHeading>
 			<Title text="{EmployeeID}" level="H2"/>
 		</semantic:titleHeading>
+		<semantic:titleContent>
+			
+			<Title text="Employee Details" level="H3"/>
+		</semantic:titleContent>
+		
 		<semantic:headerContent>
-			<ObjectNumber number="{ path: 'ReportsTo', formatter: '.formatter.numberUnit' }" unit="{BirthDate}"/>
+			<HBox alignContent="Start" alignItems="Start" justifyContent="Start">
+				<Avatar src="{image}"/>
+				</HBox>
+				
+	    <VBox alignContent="Start" alignItems="Start" justifyContent="Start">
+		<ObjectStatus title="EmpLoyee Id" text="{EmpId}" />
+		<Label width="40%"/>
+		<ObjectStatus title="Employee Name" text="{empName}"/>
+	
+		</VBox>
+		
 		</semantic:headerContent>
+		<semantic:content>
+			
+		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
 		</semantic:sendEmailAction>

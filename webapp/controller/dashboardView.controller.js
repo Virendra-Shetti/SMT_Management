@@ -1,5 +1,6 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
+/*	"sap/ui/core/mvc/Controller",*/
+		"./BaseController"
 ], function (Controller) {
 	"use strict";
 
@@ -11,6 +12,7 @@ sap.ui.define([
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
 		onInit: function () {
+
 
 			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
 			// debugger;
@@ -48,15 +50,30 @@ sap.ui.define([
 			this.getOwnerComponent().getModel("DOB").setProperty("/birthDay", birthDay);
 			// var temp1 = this.getOwnerComponent().getModel("DOB").getProperty("/birthDay");
 			// this.getView().byId("ThisMonthBirthDayButtonId").setProperty("text", birthDay.length);
+
 		},
 		onManagementCardClick: function () {
 			debugger;
-			this.Router.navTo("RouteManagementView");
+			this.getRouter().navTo("RouteManagementView");
 		},
 		onLeaveAsset: function () {
 
-			this.Router.navTo("RouteLeaveAssetView");
+			this.getRouter().navTo("RouteLeaveAssetView");
 		},
+
+		onDataBasePress :  function () {
+
+			this.getRouter().navTo("worklist");
+		}
+		/**
+		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
+		 * (NOT before the first rendering! onInit() is used for that one!).
+		 * @memberOf MT.SMT_Managment.view.dashboardView
+		 */
+		//	onBeforeRendering: function() {
+		//
+		//	},
+
 		Birthday: function (oEvent) {
 			debugger;
 
@@ -187,6 +204,7 @@ sap.ui.define([
 			//	onBeforeRendering: function() {
 			//
 			//	},
+
 
 		/**
 		 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
