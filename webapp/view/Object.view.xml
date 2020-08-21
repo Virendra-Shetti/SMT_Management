@@ -22,6 +22,9 @@
 		</VBox>
 		
 		</semantic:headerContent>
+		<semantic:content>
+			
+		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
 		</semantic:sendEmailAction>
