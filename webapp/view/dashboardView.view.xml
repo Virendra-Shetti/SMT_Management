@@ -72,7 +72,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="treeTable">
+									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
@@ -108,7 +108,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="treeTable">
+									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="3em" height="3em"/>-->
 											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
@@ -152,7 +152,7 @@
 				<!--					</Column>-->
 				<!--				</columns>-->
 				<!--				<items>-->
-				<!--					<ColumnListItem type="Navigation" press="treeTable">-->
+				<!--					<ColumnListItem type="Navigation" press="Birthday">-->
 				<!--						<cells>-->
 				<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 				<!--							<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>-->
@@ -192,7 +192,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="treeTable">
+									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
@@ -240,7 +240,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="treeTable">
+									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
@@ -288,7 +288,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="treeTable">
+									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
@@ -339,7 +339,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="treeTable">
+									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 											<Label text="{DOB>EmpId}"/>

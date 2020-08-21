@@ -57,7 +57,7 @@ sap.ui.define([
 
 			this.Router.navTo("RouteLeaveAssetView");
 		},
-		treeTable: function (oEvent) {
+		Birthday: function (oEvent) {
 			debugger;
 
 			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
