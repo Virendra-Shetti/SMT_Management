@@ -71,5 +71,109 @@
 		"endDate": "12-12-2020",
 		"empName": "alexander",
 		"date": "12-09-1993"
+	}],
+	"Leave": [{
+		"empId": "Emp04",
+		"Reason": "Sick",
+		"Fdate": "12-07-2020",
+		"Tdate": "12-07-2020",
+		"Status": "approved"
+	}, {
+		"empId": "Emp03",
+		"Reason": "Sick",
+		"Fdate": "17-06-2020",
+		"Tdate": "18-06-2020",
+		"Status": "approved"
+	}, {
+		"empId": "Emp06",
+		"Reason": "Personal Work",
+		"Fdate": "17-06-2020",
+		"Tdate": "27-06-2020",
+		"Status": "Rejected"
+	}, {
+		"empId": "Emp08",
+		"Reason": "Sick",
+		"Fdate": "18-05-2020",
+		"Tdate": "22-05-2020",
+		"Status": "Rejected"
+	}, {
+		"empId": "Emp05",
+		"Reason": "Marrage",
+		"Fdate": "18-05-2020",
+		"Tdate": "18-06-2020",
+		"Status": "approved"
+	}, {
+		"empId": "Emp04",
+		"Reason": "Marrage",
+		"Fdate": "29-08-2020",
+		"Tdate": "29-09-2020",
+		"Status": "Pending"
+	}, {
+		"empId": "Emp01",
+		"Reason": "Personal Work",
+		"Fdate": "25-08-2020",
+		"Tdate": "26-08-2020",
+		"Status": "Pending"
+	}, {
+		"empId": "Emp022",
+		"Reason": "Sick",
+		"Fdate": "22-08-2020",
+		"Tdate": "22-08-2020",
+		"Status": "Pending"
+	}],
+	"Asset": [{
+		"empId": "Emp04",
+		"assetId": "asset01",
+		"AssetName": "Portable HardDrive",
+		"Tdate": "29-07-2020",
+		"Status": "Resolved"
+	}, {
+		"empId": "Emp01",
+		"assetId": "asset02",
+		"AssetName": "Usb Connector",
+		"Tdate": "09-07-2020",
+		"Status": "Resolved"
+	}, {
+		"empId": "Emp11",
+		"assetId": "asset03",
+		"AssetName": "Laptop",
+		"Tdate": "21-06-2020",
+		"Status": "Resolved"
+	}, {
+		"empId": "Emp05",
+		"assetId": "asset04",
+		"AssetName": "Charger",
+		"Tdate": "19-08-2020",
+		"Status": "Resolved"
+	}, {
+		"empId": "Emp07",
+		"assetId": "asset05",
+		"AssetName": "Laptop Camara",
+		"Tdate": "21-08-2020",
+		"Status": "Resolved"
+	}, {
+		"empId": "Emp09",
+		"assetId": "asset06",
+		"AssetName": "USB connector",
+		"Tdate": "19-08-2020",
+		"Status": "Pending"
+	}, {
+		"empId": "Emp04",
+		"assetId": "asset07",
+		"AssetName": "Laptop Display",
+		"Tdate": "20-08-2020",
+		"Status": "Pending"
+	}, {
+		"empId": "Emp04",
+		"assetId": "asset08",
+		"AssetName": "Touch pad",
+		"Tdate": "18-08-2020",
+		"Status": "Pending"
+	}, {
+		"empId": "Emp04",
+		"assetId": "asset09",
+		"AssetName": "Touch pad",
+		"Tdate": "17-08-2020",
+		"Status": "Pending"
 	}]
 }

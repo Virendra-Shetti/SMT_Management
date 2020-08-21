@@ -50,7 +50,7 @@ sap.ui.define([
 			// this.getView().byId("ThisMonthBirthDayButtonId").setProperty("text", birthDay.length);
 		},
 		onManagementCardClick: function () {
-			// debugger;
+			debugger;
 			this.Router.navTo("RouteManagementView");
 		},
 		onLeaveAsset: function () {
@@ -91,13 +91,20 @@ sap.ui.define([
 			// this.getOwnerComponent().getModel("DOB").setProperty("Event", tempNewsCardArray);
 
 			this.getOwnerComponent().getModel("DOB").setProperty("/Event", tempNewsCardArray);
-			var birthdayFragmentId = this.createId("birthdayFragmentId");
-			if (!this.birthdayFragment) {
-				this.birthdayFragment = new sap.ui.xmlfragment(this.getView().getId(birthdayFragmentId), "MT.SMT_Managment.fragments.addEvents",
+			var relievingEventFragmentId = this.createId("relievingEventFragmentId");
+			if (!this.relievingEventFragment) {
+				this.relievingEventFragment = new sap.ui.xmlfragment(this.getView().getId(relievingEventFragmentId),
+					"MT.SMT_Managment.fragments.addEvents",
 					this);
-				this.getView().addDependent(this.birthdayFragment);
+				this.getView().addDependent(this.relievingEventFragment);
 			}
-			this.birthdayFragment.open();
+			this.relievingEventFragment.open();
+		},
+		onCloseFragmentAddEmp: function () {
+			var tempNewsCardArray = [];
+			this.getOwnerComponent().getModel("DOB").setProperty("/Event", tempNewsCardArray);
+
+			this.relievingEventFragment.close();
 		},
 		onPressThisMonthBirthDay: function () {
 			var birthdayFragmentId = this.createId("birthdayFragmentId");
@@ -131,19 +138,46 @@ sap.ui.define([
 		},
 		onClickAddEvents: function () {
 
-				var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
-				var EmpId = this.getView().byId("addEventsEmpFragementId").getValue();
-				var name = this.getView().byId("addEventsEmpFragementName").getValue();
-				var date = this.getView().byId("addEventsEmpFragementDate").getValue();
-				var eveName = this.getView().byId("addEventsEmpFragementEvent").getValue();
-				var obj = {
-					EmpId: EmpId,
-					name: name,
-					date: date,
-					eveName: eveName
-				};
-				oModelEvent.push(obj);
-				this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+			var EmpId = this.getView().byId("addEventsEmpFragementId").getValue();
+			var name = this.getView().byId("addEventsEmpFragementName").getValue();
+			var date = this.getView().byId("addEventsEmpFragementDate").getValue();
+			var eveName = this.getView().byId("addEventsEmpFragementEvent").getValue();
+			var reg_eveName = /[A-Za-z]/;
+
+			if (reg_eveName.test(eveName) == false) {
+				this.getView().byId("addEventsEmpFragementEvent").focus();
+				this.getView().byId("addEventsEmpFragementEvent").setValueState("Error");
+				this.getView().byId("addEventsEmpFragementEvent").setValueStateText("Enter Event name");
+
+				return;
+			}
+			var obj = {
+				EmpId: EmpId,
+				name: name,
+				date: date,
+				eveName: eveName
+			};
+			oModelEvent.push(obj);
+			this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			this.relievingEventFragment.close();
+		},
+		onClickdeleteEvent: function (oEvent) {
+				debugger;
+
+				var newData = oEvent.getSource().getBindingContext("DOB").getObject();
+				var array = this.getOwnerComponent().getModel("DOB").getProperty("/Events")
+				for (var i = 0; i < array.length; i++) {
+					if (array[i].EmpId === newData.EmpId) {
+						array.splice(i, 1);
+
+						this.getOwnerComponent().getModel("DOB").setProperty("/Events", array);
+
+						break;
+
+					}
+				}
+
 			}
 			/**
 			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

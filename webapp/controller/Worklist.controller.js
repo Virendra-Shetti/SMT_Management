@@ -54,11 +54,11 @@ sap.ui.define([
 		},
 		onPressLogout: function () {
 
-				this.Router.navTo("RouteDashboardView");
-			}
-			/* =========================================================== */
-			/* event handlers                                              */
-			/* =========================================================== */
+			this.Router.navTo("RouteDashboardView");
+		},
+		/* =========================================================== */
+		/* event handlers                                              */
+		/* =========================================================== */
 
 		/**
 		 * Triggered by the table's 'updateFinished' event: after new table
@@ -69,7 +69,7 @@ sap.ui.define([
 		 * @param {sap.ui.base.Event} oEvent the update finished event
 		 * @public
 		 */
-			onUpdateFinished: function (oEvent) {
+		onUpdateFinished: function (oEvent) {
 			// update the worklist's object counter after the table update
 			var sTitle,
 				oTable = oEvent.getSource(),

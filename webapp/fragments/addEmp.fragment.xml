@@ -9,7 +9,7 @@
 						<Input id="empAddFId" required="true" width="100%" editable="false"/>
 						<Label text="FName:"/>
 						<Input id="fNameFId" required="true" width="100%"/>
-						<Label id="lableName" text="LName:"/>
+						<Label text="LName:"/>
 						<Input id="lNameFId" required="true" width="100%"/>
 						<Label text="Department:"/>
 						<Input id="empAdddepFId" required="true" width="100%"/>
@@ -17,10 +17,13 @@
 						<Input id="empAddposFId" required="true" width="100%"/>
 						<Label text="Email:"/>
 						<Input id="empAddEmailId" required="true" width="100%"/>
+						<Label text="DOB:"/>
+						<DatePicker id="empAddDOBId" placeholder="Enter Date ..." navigate="handleChangeDOB" class="sapUiSmallMarginBottom"/>
 						<Label text="Starte date:"/>
-						<DatePicker id="empAddStareId" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+						<DatePicker id="empAddStareId" placeholder="Enter Date ..." navigate="handleChangeStartDate" change="onchangeStartDate"
+							class="sapUiSmallMarginBottom"/>
 						<Label text="Starte date:"/>
-						<DatePicker id="empAddEndId" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+						<DatePicker id="empAddEndId" placeholder="Enter Date ..." editable="false" class="sapUiSmallMarginBottom"/>
 						<Label text="Password:"/>
 						<Input id="empAddPassId" required="true" width="100%" editable="false"/>
 						<Toolbar>

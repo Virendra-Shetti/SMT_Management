@@ -3,24 +3,32 @@
 	<App>
 		<pages>
 			<Page title="Title" showHeader="false">
+				<!--<tnt:ToolHeader>-->
+				<!--	<tnt:ToolHeaderUtilitySeparator/>-->
+				<!--	<ToolbarSpacer>-->
+				<!--		<layoutData>-->
+				<!--			<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>-->
+				<!--		</layoutData>-->
+				<!--	</ToolbarSpacer>-->
+				<!--	<Button icon="sap-icon://log" press="onPressLogout">-->
+				<!--		<layoutData>-->
+				<!--			<OverflowToolbarLayoutData priority="NeverOverflow"/>-->
+				<!--		</layoutData>-->
+				<!--	</Button>-->
+				<!--</tnt:ToolHeader>-->
 				<tnt:ToolHeader>
-					<tnt:ToolHeaderUtilitySeparator/>
-					<ToolbarSpacer>
-						<layoutData>
-							<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
-						</layoutData>
-					</ToolbarSpacer>
-					<Button icon="sap-icon://log" press="onPressLogout">
-						<layoutData>
-							<OverflowToolbarLayoutData priority="NeverOverflow"/>
-						</layoutData>
-					</Button>
+					<ToolbarSpacer width="1em"/>
+					<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>
+					<ToolbarSpacer/>
+					<Text class="headerText" text="{i18n>headerSigniwis}"/>
+					<ToolbarSpacer/>
+					<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}" press="onPressLogout"/>
 				</tnt:ToolHeader>
 				<content>
 					<IconTabBar id="idIconTabBarNoIcons" class="sapUiResponsiveContentPadding leftPadding" expanded="true">
 						<items>
 							<IconTabFilter class="leftPadding" text="Leave">
-								<Table id="idProductsTable" inset="false" items="{/leave}">
+								<Table id="idLeaveTable" inset="false" items="{DOB>/Leave}">
 									<infoToolbar>
 										<OverflowToolbar>
 											<Label text="Leave requestes"/>
@@ -34,32 +42,65 @@
 											<Text text="Reason"/>
 										</Column>
 										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-											<Text text="Dimensions"/>
+											<Text text="From-date"/>
 										</Column>
-										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
-											<Text text="Weight"/>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+											<Text text="To-date"/>
 										</Column>
 										<Column hAlign="End">
-											<Text text="Price"/>
+											<Text text="Status"/>
 										</Column>
 									</columns>
-									<items>
+									<items >
 										<ColumnListItem>
 											<cells>
-												<ObjectIdentifier title="{Name}" text="{ProductId}"/>
-												<Text text="{SupplierName}"/>
-												<Text text="{Width} x {Depth} x {Height} {DimUnit}"/>
-												<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"
-													state="{ parts: [ {path: 'WeightMeasure'}, {path: 'WeightUnit'} ], formatter: 'sap.m.sample.Table.Formatter.weightState' }"/>
-												<ObjectNumber
-													number="{ parts:[{path:'Price'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
-													unit="{CurrencyCode}"/>
+												<Text text="{DOB>empId}"/>
+												<Text text="{DOB>Reason}"/>
+												<Text text="{DOB>Fdate}"/>
+												<Text text="{DOB>Tdate}"/>
+												<Text text="{DOB>Status}"/>
 											</cells>
 										</ColumnListItem>
 									</items>
 								</Table>
 							</IconTabFilter>
-							<IconTabFilter class="leftPadding" text="Asset"></IconTabFilter>
+							<IconTabFilter class="leftPadding" text="Asset">
+								<Table id="idAssetsTable" inset="false" items="{DOB>/Asset}">
+									<infoToolbar>
+										<OverflowToolbar>
+											<Label text="Leave requestes"/>
+										</OverflowToolbar>
+									</infoToolbar>
+									<columns>
+										<Column width="12em">
+											<Text text="Employee ID"/>
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="Asset Id"/>
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="Asset Name"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+											<Text text="Asset-date"/>
+										</Column>
+										<Column hAlign="End">
+											<Text text="Status"/>
+										</Column>
+									</columns>
+									<items >
+										<ColumnListItem>
+											<cells>
+												<Text text="{DOB>empId}"/>
+												<Text text="{DOB>assetId}"/>
+												<Text text="{DOB>AssetName}"/>
+												<Text text="{DOB>Date}"/>
+												<Text text="{DOB>Status}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
 						</items>
 					</IconTabBar>
 				</content>
