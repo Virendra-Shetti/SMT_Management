@@ -81,7 +81,17 @@ sap.ui.define([
     		sap.ui.core.Fragment.byId(frgID, vfilds[i]).setValueState("None").setValueStateText("");
     }
 
+		},
+			setInitial : function(frgID , vfilds) {
+			for(var i=0;i<vfilds.length;i++)
+    		{
+    			sap.ui.core.Fragment.byId(frgID, vfilds[i]).setValue("");
+    		sap.ui.core.Fragment.byId(frgID, vfilds[i]).setValueState("None").setValueStateText("");
 		}
+		
+		}
+		
+	
 			
 		});
 

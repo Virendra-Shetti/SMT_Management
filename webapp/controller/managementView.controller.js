@@ -113,7 +113,12 @@ sap.ui.define([
 				}
 			}
 			new validator().errorValidator(myFragId,dataError);
-			new validator().validFields(myFragId,dataValid);                
+			new validator().validFields(myFragId,dataValid);
+			
+			if (dataError !=== ""){
+			debugger;
+			new validator().setInitial(myFragId,lSid);
+			}
 		},
 
 		onFname: function (oEvent) {

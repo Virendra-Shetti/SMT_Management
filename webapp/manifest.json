@@ -67,6 +67,10 @@
 					"bundleName": "MT.SMT_Managment.i18n.i18n"
 				}
 			},
+			"DOB":{
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/MockData/data.json"
+			},
 			"": {
 				"dataSource": "mainService",
 				"preload": true
