@@ -73,9 +73,13 @@ sap.ui.define([
 		 */
 		_onObjectMatched : function (oEvent) {
 			var sObjectId =  oEvent.getParameter("arguments").objectId;
+				var that = this.getView();
 			this.getModel().metadataLoaded().then( function() {
-				var sObjectPath = this.getModel().createKey("Employees", {
-					EmployeeID :  sObjectId
+			
+				debugger;
+				var sObjectPath = that.getModel().createKey("Employee", {
+					
+				EmpId :  sObjectId
 				});
 				this._bindView("/" + sObjectPath);
 			}.bind(this));
@@ -124,8 +128,8 @@ sap.ui.define([
 
 			var oResourceBundle = this.getResourceBundle(),
 				oObject = oView.getBindingContext().getObject(),
-				sObjectId = oObject.EmployeeID,
-				sObjectName = oObject.EmployeeID;
+				sObjectId = oObject.EmpId,
+				sObjectName = oObject.EmpId;
 
 			oViewModel.setProperty("/busy", false);
 

@@ -1,5 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns="sap.m"
-	controllerName="MT.SMT_Managment.controller.leaveAndAssetView" xmlns:html="http://www.w3.org/1999/xhtml">
+	controllerName="MT.SMT_Managment.controller.leaveAndAssetView" xmlns:html="http://www.w3.org/1999/xhtml"  
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilter="sap.ui.comp.smartfilterbar">
 	<App>
 		<pages>
 			<Page title="Title" showHeader="false">
@@ -23,6 +24,18 @@
 							<IconTabFilter class="leftPadding" text="Asset"></IconTabFilter>
 						</items>
 					</IconTabBar>
+					
+			<Button text="Show Table" id="idBtn" press="onPress"/>
+			
+			<smartFilter:SmartFilterBar id="idSmartFilterBar" entitySet="Employee" enableBasicSearch="true" persistencyKey="SmartFilter_Explored"></smartFilter:SmartFilterBar>
+			<smartTable:SmartTable id="idSmartTable" visible="true" entitySet="Employee" useExportToExcel="true" beforeExport="onBeforeExport"
+				smartFilterId="idSmartFilterBar" useVariantManagement="true" useTablePersonalisation="true" header="Employee Details " showRowCount="true"
+				initiallyVisibleFields="AssetId" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+				class="sapUiResponsiveContentPadding" tableType="Table">
+				
+			</smartTable:SmartTable>
+				
+		
 				</content>
 			</Page>
 		</pages>

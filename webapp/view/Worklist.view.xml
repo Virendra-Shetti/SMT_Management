@@ -4,7 +4,7 @@
 			<Title text="{i18n>worklistTitle}" level="H2"/>
 		</semantic:titleHeading>
 		<semantic:content>
-			<Table id="table" width="auto" items="{ path: '/Employee', sorter: { path: 'EmployeeID', descending: false } }"
+			<Table id="table" width="auto" items="{ path: '/Employee', sorter: { path: 'EmpId', descending: false } }"
 				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
 				updateFinished=".onUpdateFinished">
 				<headerToolbar>
@@ -19,30 +19,38 @@
 					</OverflowToolbar>
 				</headerToolbar>
 				<columns>
+					<Column id="empIdColumn">
+						<Text text="{i18n>tableIdColumnTitle}" id="IdColumnTitle"/>
+					</Column>
 					<Column id="nameColumn">
 						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
 					</Column>
-					<Column id="unitNumberColumn" hAlign="End">
-						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+					<Column id="unitDnameColumn" hAlign="End">
+						<Text text="{i18n>tableUnitDnameColumnTitle}" id="unitDnameColumnTitle"/>
 					</Column>
-						<Column id="unitNameColumn" hAlign="End">
-						<Text text="{i18n>tableUnitNameColumnTitle}" id="unitNamerColumnTitle"/>
+						<Column id="unitEmailColumn" hAlign="End">
+						<Text text="{i18n>tableUnitEmailColumnTitle}" id="unitEmailColumnTitle"/>
 					</Column>
-						<Column id="unitDOBColumn" hAlign="End">
+						<Column id="unitStartColumn" hAlign="End">
+						<Text text="{i18n>tableUnitStartColumnTitle}" id="unitStartColumnTitle"/>
+					</Column>
+						<Column id="unitEndColumn" hAlign="End">
+						<Text text="{i18n>tableUnitEndsColumnTitle}" id="unitEndColumnTitle"/>
+					</Column>
+					<Column id="unitDOBColumn" hAlign="End">
 						<Text text="{i18n>tableUnitDOBColumnTitle}" id="unitDOBColumnTitle"/>
-					</Column>
-						<Column id="unitAddressColumn" hAlign="End">
-						<Text text="{i18n>tableUnitAddressColumnTitle}" id="unitAddressColumnTitle"/>
 					</Column>
 				</columns>
 				<items>
 					<ColumnListItem type="Navigation" press=".onPress">
 						<cells>
-							<ObjectIdentifier title="{EmployeeID}"/>
-							<ObjectNumber number="{ path: 'Salary', formatter: '.formatter.numberUnit' }" unit="{Salary}"/>
-							<ObjectAttribute text="{FirstName}" />
-							<ObjectAttribute text="{Age}" />
-						<!--	<ObjectAttribute text="{Address}" />-->
+							<ObjectIdentifier title="{EmpId}"/>
+							<ObjectIdentifier title="{empName}"/>
+							<ObjectIdentifier title="{Department}"/>
+					    	<ObjectAttribute text="{Email}" />
+					    	<ObjectAttribute text="{startDate}" />
+					    	<ObjectAttribute text="{endDate}" />
+					    	<ObjectAttribute text="{date}" />
 						</cells>
 					</ColumnListItem>
 				</items>
