@@ -4,8 +4,10 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"MT/SMT_Managment/Util/validator",
-	"sap/ui/core/routing/History"
-], function (BaseController, Controller, Fragment, JSONModel, validator, History) {
+	"sap/ui/core/routing/History",
+	"MT/SMT_Managment/Util/callingFragment",
+	"sap/m/MessageToast"
+], function (BaseController, Controller, Fragment, JSONModel, validator, History, callFragment, MessageToast) {
 	"use strict";
 
 	return BaseController.extend("MT.SMT_Managment.controller.managementView", {
@@ -51,26 +53,39 @@ sap.ui.define([
 			}
 
 		},
+		// calling the fragment to add new Employees................................................................
 		onPressAddEmp: function () {
-			debugger;
-			this._getFragement().open();
 
-			
-		},
-		_getFragement: function () {
-			if (!this._oDailog) { // chekking if the dialog box is = null or undefined, if yes then creating the object of the fragment.
-				var oview = this.getView(); // getting the view object.
-				var oID = this.createId("idFragment1"); //  Creating a Dynamic id for the fragment.
-				this._oDailog = sap.ui.xmlfragment(oID, "MT.SMT_Managment.fragments.addEmp", this); // creating the fragment object.
-
-				oview.addDependent(this._oDailog); // Adding the fragment to the controller.
-			}
-			return this._oDailog;
+			var emiFragmentId = this.createId("emiFragmentId");
+			var addEmpObj = { // An object to hold the id and the onject of the current controller...
+				"that": this,
+				"id": emiFragmentId
+			};
+			new callFragment().callFragment.addEmployee.apply(addEmpObj); // Creating the fragment and adding it to the Managment View...
 		},
 		onCloseFragmentAddEmp: function () {
 
-			this._getFragement().close();
+			this.empAddFragment.close();
 		},
+		//New employeee fragment has ended..................................................................
+
+		//calling A fragment view to add the events related to the organization.................................
+		onPressAddEvent: function () {
+
+			var addEventFragmentId = this.createId("addEventFragmentId");
+			var eventObj = {
+				"that": this,
+				"id": addEventFragmentId
+			};
+
+			new callFragment().callFragment.createEvent.apply(eventObj); //Creating the fragment to add the events.     
+		},
+		// Function to close the event fragment...............................................
+		onCloseFragmentEventEmp: function () {
+			this.managementEventAddFragment.close();
+		},
+
+		//......................................................................................................................................	
 		onPressLogout: function () {
 
 			var sPreviousHash = History.getInstance().getPreviousHash();
@@ -81,44 +96,118 @@ sap.ui.define([
 				this.getRouter().navTo("RouteDashboardView", {}, true);
 			}
 		},
-		/*	_getFildData : function(fildData){
-					debugger;
-				if(fildData=== undefined || fildData == "" || fildData == null ){
-					return false;
-				}
-			},*/
+		handleChangeDOB: function () {
+
+			// var minDate: new Date(2019, 8, 15);
+			var dob = {
+				"that": this
+			};
+			new validator().validateFragFields.dateField.apply(dob);
+		},
+		//Function to validate the joining date field..........................
+		handleChangeStartDate: function () {
+
+			// var minDate: new Date(2019, 8, 15);
+			var joinDate = {
+				"that": this
+			};
+
+			new validator().validateFragFields.joiningDate.apply(joinDate);
+		},
+		onchangeLeavingDate: function () {
+
+			var leaveDate = {
+				"that": this
+			};
+
+			new validator().validateFragFields.releavingDate.apply(leaveDate);
+		},
+
 		onSave: function () {
-			debugger;
-			var myFragId = this.createId("idFragment1");
+
 			// Below is an array to store the ids for validation purpose.
-			var lSid = ["fNameFId", "lNameFId", "empAdddepFId", "empAddposFId", "empAddEmailId", "empAddStareId", "empAddPassId"];
+			var lSid = new validator().validateFragFields.lSid;
+
 			// Below is an array to stroe the data of the fields for the validation.......
-			var container = ["cfNameFId", "clNameFId", "cempAdddepFId", "cempAddposFId", "cempAddEmailId", "cempAddStareId", "cempAddPassId"];
+			var container = [];
 			//  a loop to store the data into the data array.............................
 			for (var i = 0; i < lSid.length; i++) {
-				container[i] = sap.ui.core.Fragment.byId(myFragId, lSid[i]).getValue();
+				container[i] = this.getView().byId(lSid[i]).getValue();
 			}
-			var dataError = [];
-			var dataValid = [];
-			var d = 0;
-			var h = 0;
-			for (var c = 0; c < container.length; c++) {
-				if (container[c] === null || container[c] === "") {
 
-					dataError[d] = lSid[c];
-					d++;
-				} else if (container[c] !== null || container[c] !== "") {
-					dataValid[h] = lSid[c];
-					h++;
+			var valid = [];
+			var emty = [];
+			var vnex = 0;
+			var enex = 0;
+
+			debugger;
+			container.forEach(eVaild);
+
+			function eVaild(ids, index) {
+				if (container !== "") {
+					valid[vnex] = lSid[index];
+					vnex++;
+				} else {
+					emty[enex] = lSid[index];
+					enex++;
+
 				}
 			}
-			new validator().errorValidator(myFragId,dataError);
-			new validator().validFields(myFragId,dataValid);
-			
-			if (dataError !== ""){
-			debugger;
-			new validator().setInitial(myFragId,lSid);
+
+			var inputValidation = {
+				"that": this,
+				"fielId": emty
+
+			};
+			var validFields = {
+				"that": this,
+				"vfilds": valid
+			};
+
+			new validator().validateFragFields.validFields.apply(validFields);
+			if (valid.length === 8) {
+				var EmpId = this.getView().byId("empAddFId").getValue();
+				var Name = this.getView().byId(valid[0]).getValue() + " " + this.getView().byId(valid[1]).getValue();
+				// var LName = this.getView().byId("lNameFId").getValue();
+				var image = "https://ga.berkeley.edu/wp-content/uploads/2015/08/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
+				var Department = this.getView().byId(valid[2]).getValue();
+				var position = this.getView().byId(valid[3]).getValue();
+				var Email = this.getView().byId(valid[4]).getValue();
+				var date = this.getView().byId(valid[5]).getValue();
+
+				var startDate = this.getView().byId(valid[6]).getValue();
+				var endDate = this.getView().byId(valid[7]).getValue();
+				// var empName = this.getView().byId("addEventsEmpFragementId").getValue();
+
+				var obj = {
+					EmpId: EmpId,
+					image: image,
+					Department: Department,
+					position: position,
+					Email: Email,
+					startDate: startDate,
+					endDate: endDate,
+					empName: Name,
+					date: date
+
+				};
+
+				var array = this.getView().getModel("DOB").getProperty("/Employee");
+				array.push(obj);
+				this.getView().getModel("DOB").setProperty("/Employee", array);
+				debugger;
+				var closeEmpFrag = {
+					"that" : this,
+			"fragClose":	this.empAddFragment,
+			"ids": lSid
+				};
+                     new validator().validateFragFields.closeEmpForm.apply(closeEmpFrag);
+                     	
+			} else {
+				MessageToast.show("Please Fill all the required Fields");
+				new validator().validateFragFields.errorValidator.apply(inputValidation);
 			}
+
 		},
 
 		onFname: function (oEvent) {

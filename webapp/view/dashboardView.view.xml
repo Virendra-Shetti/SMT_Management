@@ -56,7 +56,7 @@
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<Table items="{Employee}" width="100%">
+							<Table items="{DOB>/Employee}" width="100%">
 								<columns>
 									<Column>
 										<Text text="image"/>
@@ -75,10 +75,10 @@
 									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
-											<Avatar src="{image}" displaySize="S" showBorder="true"/>
-											<Label text="{EmpId}" class="sapUiSmallMarginEnd"/>
-											<Label text="{empName}" class="sapUiSmallMarginEnd"/>
-											<Label text="{Department}" class="sapUiSmallMarginEnd"/>
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>Department}" class="sapUiSmallMarginEnd"/>
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -92,7 +92,7 @@
 					</f:header>
 					<f:content>
 						<ScrollContainer height="200px" width="100%" vertical="true" focusable="true">
-							<Table items="{/Employee}" width="100%">
+							<Table items="{DOB>/Employee}" width="100%">
 								<columns>
 									<Column>
 										<Text text="image"/>
@@ -111,10 +111,10 @@
 									<ColumnListItem type="Navigation" press="Birthday">
 										<cells>
 											<!--<Image src="{DOB>image}" width="3em" height="3em"/>-->
-											<Avatar src="{image}" displaySize="S" showBorder="true"/>
-											<Label text="{EmpId}" class="sapUiSmallMarginEnd"/>
-											<Label text="{empName}" class="sapUiSmallMarginEnd"/>
-											<Label text="{Department}" class="sapUiSmallMarginEnd"/>
+											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>
+											<Label text="{DOB>EmpId}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>empName}" class="sapUiSmallMarginEnd"/>
+											<Label text="{DOB>Department}" class="sapUiSmallMarginEnd"/>
 										</cells>
 									</ColumnListItem>
 								</items>
