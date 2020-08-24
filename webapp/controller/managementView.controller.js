@@ -80,6 +80,38 @@ sap.ui.define([
 
 			new callFragment().callFragment.createEvent.apply(eventObj); //Creating the fragment to add the events.     
 		},
+
+		onClickAddEvents: function () {
+
+			var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+			var EmpId = this.getView().byId("addEventsMangFragementId").getValue();
+			var name = this.getView().byId("addEventsMangFragementName").getValue();
+			var date = this.getView().byId("addEventsMangFragementDate").getValue();
+			var eveName = this.getView().byId("addEventsMangFragementEvent").getValue();
+			if (date == "") {
+				this.getView().byId("addEventsMangFragementDate").focus();
+				this.getView().byId("addEventsMangFragementDate").setValueState("Error");
+				this.getView().byId("addEventsMangFragementDate").setValueStateText("Date required");
+
+				return;
+			}
+			if (eveName == "") {
+				this.getView().byId("addEventsMangFragementEvent").focus();
+				this.getView().byId("addEventsMangFragementEvent").setValueState("Error");
+				this.getView().byId("addEventsMangFragementEvent").setValueStateText("Event Name required");
+
+				return;
+			}
+			var obj = {
+				EmpId: EmpId,
+				name: name,
+				date: date,
+				eveName: eveName
+			};
+			oModelEvent.push(obj);
+			this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			this.managementEventAddFragment.close();
+		},
 		// Function to close the event fragment...............................................
 		onCloseFragmentEventEmp: function () {
 			this.managementEventAddFragment.close();
