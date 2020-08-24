@@ -1,121 +1,35 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns="sap.m"
-	controllerName="MT.SMT_Managment.controller.leaveAndAssetView" xmlns:html="http://www.w3.org/1999/xhtml"  
+	controllerName="MT.SMT_Managment.controller.leaveAndAssetView" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilter="sap.ui.comp.smartfilterbar">
 	<App>
 		<pages>
 			<Page title="Title" showHeader="false">
-				<!--<tnt:ToolHeader>-->
-				<!--	<tnt:ToolHeaderUtilitySeparator/>-->
-				<!--	<ToolbarSpacer>-->
-				<!--		<layoutData>-->
-				<!--			<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>-->
-				<!--		</layoutData>-->
-				<!--	</ToolbarSpacer>-->
-				<!--	<Button icon="sap-icon://log" press="onPressLogout">-->
-				<!--		<layoutData>-->
-				<!--			<OverflowToolbarLayoutData priority="NeverOverflow"/>-->
-				<!--		</layoutData>-->
-				<!--	</Button>-->
-				<!--</tnt:ToolHeader>-->
 				<tnt:ToolHeader>
-					<ToolbarSpacer width="1em"/>
-					<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>
-					<ToolbarSpacer/>
-					<Text class="headerText" text="{i18n>headerSigniwis}"/>
-					<ToolbarSpacer/>
-					<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}" press="onPressLogout"/>
+					<tnt:ToolHeaderUtilitySeparator/>
+					<ToolbarSpacer>
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
+						</layoutData>
+					</ToolbarSpacer>
+					<Button icon="sap-icon://log" press="onPressLogout">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Button>
 				</tnt:ToolHeader>
 				<content>
 					<IconTabBar id="idIconTabBarNoIcons" class="sapUiResponsiveContentPadding leftPadding" expanded="true">
 						<items>
-							<IconTabFilter class="leftPadding" text="Leave">
-								<Table id="idLeaveTable" inset="false" items="{DOB>/Leave}">
-									<infoToolbar>
-										<OverflowToolbar>
-											<Label text="Leave requestes"/>
-										</OverflowToolbar>
-									</infoToolbar>
-									<columns>
-										<Column width="12em">
-											<Text text="Employee ID"/>
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true">
-											<Text text="Reason"/>
-										</Column>
-										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-											<Text text="From-date"/>
-										</Column>
-										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-											<Text text="To-date"/>
-										</Column>
-										<Column hAlign="End">
-											<Text text="Status"/>
-										</Column>
-									</columns>
-									<items >
-										<ColumnListItem>
-											<cells>
-												<Text text="{DOB>empId}"/>
-												<Text text="{DOB>Reason}"/>
-												<Text text="{DOB>Fdate}"/>
-												<Text text="{DOB>Tdate}"/>
-												<Text text="{DOB>Status}"/>
-											</cells>
-										</ColumnListItem>
-									</items>
-								</Table>
-							</IconTabFilter>
-							<IconTabFilter class="leftPadding" text="Asset">
-								<Table id="idAssetsTable" inset="false" items="{DOB>/Asset}">
-									<infoToolbar>
-										<OverflowToolbar>
-											<Label text="Leave requestes"/>
-										</OverflowToolbar>
-									</infoToolbar>
-									<columns>
-										<Column width="12em">
-											<Text text="Employee ID"/>
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true">
-											<Text text="Asset Id"/>
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true">
-											<Text text="Asset Name"/>
-										</Column>
-										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-											<Text text="Asset-date"/>
-										</Column>
-										<Column hAlign="End">
-											<Text text="Status"/>
-										</Column>
-									</columns>
-									<items >
-										<ColumnListItem>
-											<cells>
-												<Text text="{DOB>empId}"/>
-												<Text text="{DOB>assetId}"/>
-												<Text text="{DOB>AssetName}"/>
-												<Text text="{DOB>Date}"/>
-												<Text text="{DOB>Status}"/>
-											</cells>
-										</ColumnListItem>
-									</items>
-								</Table>
-							</IconTabFilter>
+							<IconTabFilter class="leftPadding" text="Leave"></IconTabFilter>
+							<IconTabFilter class="leftPadding" text="Asset"></IconTabFilter>
 						</items>
 					</IconTabBar>
-					
-			<Button text="Show Table" id="idBtn" press="onPress"/>
-			
-			<smartFilter:SmartFilterBar id="idSmartFilterBar" entitySet="Employee" enableBasicSearch="true" persistencyKey="SmartFilter_Explored"></smartFilter:SmartFilterBar>
-			<smartTable:SmartTable id="idSmartTable" visible="true" entitySet="Employee" useExportToExcel="true" beforeExport="onBeforeExport"
-				smartFilterId="idSmartFilterBar" useVariantManagement="true" useTablePersonalisation="true" header="Employee Details " showRowCount="true"
-				initiallyVisibleFields="AssetId" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
-				class="sapUiResponsiveContentPadding" tableType="Table">
-				
-			</smartTable:SmartTable>
-				
-		
+					<Button text="Show Table" id="idBtn" press="onPress"/>
+					<smartFilter:SmartFilterBar id="idSmartFilterBar" entitySet="Employee" enableBasicSearch="true" persistencyKey="SmartFilter_Explored"></smartFilter:SmartFilterBar>
+					<smartTable:SmartTable id="idSmartTable" visible="true" entitySet="Employee" useExportToExcel="true" beforeExport="onBeforeExport"
+						smartFilterId="idSmartFilterBar" useVariantManagement="true" useTablePersonalisation="true" header="Employee Details " showRowCount="true"
+						initiallyVisibleFields="AssetId" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+						class="sapUiResponsiveContentPadding" tableType="Table"></smartTable:SmartTable>
 				</content>
 			</Page>
 		</pages>

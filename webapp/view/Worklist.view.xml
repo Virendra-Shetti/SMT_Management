@@ -1,8 +1,7 @@
 <mvc:View controllerName="MT.SMT_Managment.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic">
 	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
 		<semantic:titleHeading>
-			<Title text="Management Tool1" level="H2"/>
-			<Button icon="sap-icon://log" press="onPressLogout"/>
+			<Title text="{i18n>worklistTitle}" level="H2"/>
 		</semantic:titleHeading>
 		<semantic:content>
 			<Table id="table" width="auto" items="{ path: '/Employee', sorter: { path: 'EmpId', descending: false } }"
@@ -29,13 +28,13 @@
 					<Column id="unitDnameColumn" hAlign="End">
 						<Text text="{i18n>tableUnitDnameColumnTitle}" id="unitDnameColumnTitle"/>
 					</Column>
-						<Column id="unitEmailColumn" hAlign="End">
+					<Column id="unitEmailColumn" hAlign="End">
 						<Text text="{i18n>tableUnitEmailColumnTitle}" id="unitEmailColumnTitle"/>
 					</Column>
-						<Column id="unitStartColumn" hAlign="End">
+					<Column id="unitStartColumn" hAlign="End">
 						<Text text="{i18n>tableUnitStartColumnTitle}" id="unitStartColumnTitle"/>
 					</Column>
-						<Column id="unitEndColumn" hAlign="End">
+					<Column id="unitEndColumn" hAlign="End">
 						<Text text="{i18n>tableUnitEndsColumnTitle}" id="unitEndColumnTitle"/>
 					</Column>
 					<Column id="unitDOBColumn" hAlign="End">
@@ -48,10 +47,10 @@
 							<ObjectIdentifier title="{EmpId}"/>
 							<ObjectIdentifier title="{empName}"/>
 							<ObjectIdentifier title="{Department}"/>
-					    	<ObjectAttribute text="{Email}" />
-					    	<ObjectAttribute text="{startDate}" />
-					    	<ObjectAttribute text="{endDate}" />
-					    	<ObjectAttribute text="{date}" />
+							<ObjectAttribute text="{Email}"/>
+							<ObjectAttribute text="{startDate}"/>
+							<ObjectAttribute text="{endDate}"/>
+							<ObjectAttribute text="{date}"/>
 						</cells>
 					</ColumnListItem>
 				</items>

@@ -74,10 +74,6 @@
 			"": {
 				"dataSource": "mainService",
 				"preload": true
-			},
-			"DOB": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mockData/dates.json"
 			}
 		},
 		"routing": {

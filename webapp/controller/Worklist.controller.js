@@ -49,13 +49,8 @@ sap.ui.define([
 				// Restore original busy indicator delay for worklist's table
 				oViewModel.setProperty("/tableBusyDelay", iOriginalBusyDelay);
 			});
-
-			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
 		},
-		onPressLogout: function () {
 
-			this.Router.navTo("RouteDashboardView");
-		},
 		/* =========================================================== */
 		/* event handlers                                              */
 		/* =========================================================== */
@@ -143,9 +138,8 @@ sap.ui.define([
 		 * @param {sap.m.ObjectListItem} oItem selected Item
 		 * @private
 		 */
-
 		_showObject: function (oItem) {
-
+			debugger;
 			this.getRouter().navTo("object", {
 				objectId: oItem.getBindingContext().getProperty("EmpId")
 			});

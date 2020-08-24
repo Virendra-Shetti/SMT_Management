@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
 	<edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0"
@@ -19,9 +18,6 @@
 				<Property Name="date" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
 				<Property Name="image" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false"/>
 				<Property Name="Addre" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
-			
-			
-
 				<!--<NavigationProperty Name="Employees1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees1" FromRole="Employees"/>
 			<NavigationProperty Name="Employee1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees" FromRole="Employees1"/>
 			<NavigationProperty Name="Orders" Relationship="NorthwindModel.FK_Orders_Employees" ToRole="Orders" FromRole="Employees"/>
@@ -29,10 +25,8 @@
 			</EntityType>
 			<ComplexType Name="LocationDetail"/>
 			<EntityContainer Name="NerdMeetups" m:IsDefaultEntityContainer="true">
-
 				<EntitySet Name="Employee" EntityType="NerdMeetup.Models.EmployeeType"/>
 				<FunctionImport Name="FindUpcomingMeetups" EntitySet="Emp" ReturnType="Collection(NerdMeetup.Models.EmployeeType)" m:HttpMethod="GET"/>
-
 			</EntityContainer>
 		</Schema>
 	</edmx:DataServices>

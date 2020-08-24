@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"sap/base/util/UriParameters",
 	"sap/base/Log"
-], function (MockServer, Log) {
+], function (MockServer, JSONModel, UriParameters, Log) {
 	"use strict";
 
 	return {
@@ -17,7 +17,6 @@ sap.ui.define([
 			// create
 			var oMockServer = new MockServer({
 				rootUri: "/"
-
 			});
 
 			// simulate against the metadata and mock data
@@ -34,4 +33,3 @@ sap.ui.define([
 
 	};
 });
-
