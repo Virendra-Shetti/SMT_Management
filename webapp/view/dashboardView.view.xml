@@ -24,7 +24,7 @@
 						<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>
 						<Text text="attendance summary - Aug 17 to Aug 23"/>
 						<ToolbarSpacer/>
-						<Text class="headerText" text="{i18n>headerSigniwis}"/>
+						<Text class="headerText" text="{i18n>headerSigniwis}" />
 						<ToolbarSpacer/>
 						<Button type="Transparent" press="onPress" icon="sap-icon://bell" tooltip="{i18n>notify}"/>
 						<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}"/>

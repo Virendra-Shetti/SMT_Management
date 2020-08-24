@@ -23,7 +23,21 @@
 		
 		</semantic:headerContent>
 		<semantic:content>
-			
+				<List>
+
+				
+				<DisplayListItem
+					label="Address"
+					value="{Addre}" />
+				<DisplayListItem
+					label="Skills"
+					value="{skils}"
+					/>
+				<DisplayListItem
+					label="Projects"
+					value="{projects}" 
+					/>
+			</List>
 		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>

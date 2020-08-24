@@ -64,8 +64,14 @@ sap.ui.define([
 			new callFragment().callFragment.addEmployee.apply(addEmpObj); // Creating the fragment and adding it to the Managment View...
 		},
 		onCloseFragmentAddEmp: function () {
-
-			this.empAddFragment.close();
+          var lSid = new validator().validateFragFields.lSid;
+				var closeEmpFrag = {
+					"that": this,
+					"fragClose": this.empAddFragment,
+					"ids": lSid
+				};
+				new validator().validateFragFields.closeEmpForm.apply(closeEmpFrag);
+		//	this.empAddFragment.close();
 		},
 		//New employeee fragment has ended..................................................................
 
@@ -114,6 +120,8 @@ sap.ui.define([
 		},
 		// Function to close the event fragment...............................................
 		onCloseFragmentEventEmp: function () {
+				debugger;
+					
 			this.managementEventAddFragment.close();
 		},
 
@@ -239,6 +247,7 @@ sap.ui.define([
 			} else {
 				MessageToast.show("Please Fill all the required Fields");
 				new validator().validateFragFields.errorValidator.apply(inputValidation);
+			
 			}
 
 		},
