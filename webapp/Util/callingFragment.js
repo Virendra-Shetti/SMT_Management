@@ -33,7 +33,8 @@ sap.ui.define([
 
 			that.empAddFragment.open();
 			var emploee = that.getView().getModel("DOB").getProperty("/Employee");
-			that.getView().byId("empAddFId").setValue("Emp0" + emploee.length);
+		
+			that.getView().byId("empAddFId").setValue("Emp0" + ++emploee.length);
 		}
 			}
 			
