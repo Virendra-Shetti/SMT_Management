@@ -18,8 +18,6 @@
 				<Property Name="date" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
 				<Property Name="image" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false"/>
 				<Property Name="Addre" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
-			
-			
 				<!--<NavigationProperty Name="Employees1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees1" FromRole="Employees"/>
 			<NavigationProperty Name="Employee1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees" FromRole="Employees1"/>
 			<NavigationProperty Name="Orders" Relationship="NorthwindModel.FK_Orders_Employees" ToRole="Orders" FromRole="Employees"/>

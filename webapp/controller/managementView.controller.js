@@ -80,6 +80,38 @@ sap.ui.define([
 
 			new callFragment().callFragment.createEvent.apply(eventObj); //Creating the fragment to add the events.     
 		},
+
+		onClickAddEvents: function () {
+
+			var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+			var EmpId = this.getView().byId("addEventsMangFragementId").getValue();
+			var name = this.getView().byId("addEventsMangFragementName").getValue();
+			var date = this.getView().byId("addEventsMangFragementDate").getValue();
+			var eveName = this.getView().byId("addEventsMangFragementEvent").getValue();
+			if (date == "") {
+				this.getView().byId("addEventsMangFragementDate").focus();
+				this.getView().byId("addEventsMangFragementDate").setValueState("Error");
+				this.getView().byId("addEventsMangFragementDate").setValueStateText("Date required");
+
+				return;
+			}
+			if (eveName == "") {
+				this.getView().byId("addEventsMangFragementEvent").focus();
+				this.getView().byId("addEventsMangFragementEvent").setValueState("Error");
+				this.getView().byId("addEventsMangFragementEvent").setValueStateText("Event Name required");
+
+				return;
+			}
+			var obj = {
+				EmpId: EmpId,
+				name: name,
+				date: date,
+				eveName: eveName
+			};
+			oModelEvent.push(obj);
+			this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			this.managementEventAddFragment.close();
+		},
 		// Function to close the event fragment...............................................
 		onCloseFragmentEventEmp: function () {
 			this.managementEventAddFragment.close();
@@ -166,7 +198,7 @@ sap.ui.define([
 
 			new validator().validateFragFields.validFields.apply(validFields);
 			var preLen = lSid.length;
-			if (valid.length >=preLen && valid !="") {
+			if (valid.length >= preLen && valid !="") {
 				var EmpId = this.getView().byId("empAddFId").getValue();
 				var Name = this.getView().byId(valid[0]).getValue() + " " + this.getView().byId(valid[1]).getValue();
 				// var LName = this.getView().byId("lNameFId").getValue();
@@ -198,12 +230,12 @@ sap.ui.define([
 				this.getView().getModel("DOB").setProperty("/Employee", array);
 				debugger;
 				var closeEmpFrag = {
-					"that" : this,
-			"fragClose":	this.empAddFragment,
-			"ids": lSid
+					"that": this,
+					"fragClose": this.empAddFragment,
+					"ids": lSid
 				};
-                     new validator().validateFragFields.closeEmpForm.apply(closeEmpFrag);
-                     	
+				new validator().validateFragFields.closeEmpForm.apply(closeEmpFrag);
+
 			} else {
 				MessageToast.show("Please Fill all the required Fields");
 				new validator().validateFragFields.errorValidator.apply(inputValidation);

@@ -1,6 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns="sap.m" xmlns:l="sap.ui.layout"
-	controllerName="MT.SMT_Managment.controller.dashboardView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f" xmlns:card="sap.f.cards">
-    
+	controllerName="MT.SMT_Managment.controller.dashboardView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f"
+	xmlns:card="sap.f.cards">
 	<App >
 		<pages>
 			<Page showHeader="false">
