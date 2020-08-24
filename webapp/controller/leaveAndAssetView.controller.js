@@ -2,7 +2,7 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History"
-], function (BaseController,Controller,History) {
+], function (BaseController, Controller, History) {
 	"use strict";
 
 	return BaseController.extend("MT.SMT_Managment.controller.leaveAndAssetView", {
@@ -14,16 +14,33 @@ sap.ui.define([
 		 */
 		onInit: function () {
 
-		
 		},
 		onPressLogout: function () {
-				var sPreviousHash = History.getInstance().getPreviousHash();
+			var sPreviousHash = History.getInstance().getPreviousHash();
 
 			if (sPreviousHash !== undefined) {
 				history.go(-1);
 			} else {
 				this.getRouter().navTo("RouteDashboardView", {}, true);
 			}
+		},
+		onSearch: function (oEvent) {
+				debugger;
+				var search = oEvent.getParameter("newValue");
+				var oFilterName = new sap.ui.model.Filter(
+					"Reason",
+					sap.ui.model.FilterOperator.Contains,
+					search);
+
+				var oFilter = new sap.ui.model.Filter({
+					// filters: [oFilterName, oFilterId],
+					filters: [oFilterName],
+					and: false
+				});
+				var aFilter = [oFilter];
+				// var aFilterId = [oFilterId];
+				var oList = this.getView().byId("idLeaveTable");
+				oList.getBinding("items").filter(aFilter);
 			}
 			/**
 			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
