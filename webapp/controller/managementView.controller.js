@@ -176,7 +176,7 @@ sap.ui.define([
 			container.forEach(eVaild);
 
 			function eVaild(ids, index) {
-				if (container !== "") {
+				if (!container.includes("")) {
 					valid[vnex] = lSid[index];
 					vnex++;
 				} else {
@@ -197,7 +197,8 @@ sap.ui.define([
 			};
 
 			new validator().validateFragFields.validFields.apply(validFields);
-			if (valid.length === 8) {
+			var preLen = lSid.length;
+			if (valid.length >= preLen && valid !="") {
 				var EmpId = this.getView().byId("empAddFId").getValue();
 				var Name = this.getView().byId(valid[0]).getValue() + " " + this.getView().byId(valid[1]).getValue();
 				// var LName = this.getView().byId("lNameFId").getValue();
