@@ -24,8 +24,91 @@ sap.ui.define([
 				this.getRouter().navTo("RouteDashboardView", {}, true);
 			}
 		},
+
+		onCloseFragmentLeaveAction: function () {
+			this.LeaveActionFragment.close();
+		},
+		onPressLeaveApprovel: function (oEvent) {
+			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
+			if (newData.Status == "Pending") {
+				var tempNewsCardModel = new sap.ui.model.json.JSONModel();
+				this.getOwnerComponent().setModel(tempNewsCardModel, "/LeaveAction");
+				var tempNewsCardArray = [];
+				tempNewsCardArray.push(newData);
+
+				this.getOwnerComponent().getModel("DOB").setProperty("/LeaveAction", tempNewsCardArray);
+				var LeaveActionFragmentId = this.createId("LeaveActionFragmentId");
+				if (!this.relievingEventFragment) {
+					this.LeaveActionFragment = new sap.ui.xmlfragment(this.getView().getId(LeaveActionFragmentId),
+						"MT.SMT_Managment.fragments.LeaveAction",
+						this);
+					this.getView().addDependent(this.LeaveActionFragment);
+				}
+				this.LeaveActionFragment.open();
+			}
+
+		},
+		onClickLeaveApprival: function () {
+			var obj = this.getOwnerComponent().getModel("DOB").getProperty("/LeaveAction");
+			var newData = this.getOwnerComponent().getModel("DOB").getProperty("/Leave");
+			for (var i = 0; i < newData.length; i++) {
+				if (obj[0].empId == newData[i].empId && obj[0].Fdate == newData[i].Fdate && obj[0].Status == newData[i].Status) {
+					newData[i].Status = "approved";
+				}
+			}
+			this.getOwnerComponent().getModel("DOB").setProperty("/Leave", newData);
+			this.LeaveActionFragment.close();
+
+		},
+		onClickLeaveReject: function () {
+			var obj = this.getOwnerComponent().getModel("DOB").getProperty("/LeaveAction");
+			var newData = this.getOwnerComponent().getModel("DOB").getProperty("/Leave");
+			for (var i = 0; i < newData.length; i++) {
+				if (obj[0].empId == newData[i].empId && obj[0].Fdate == newData[i].Fdate && obj[0].Status == newData[i].Status) {
+					newData[i].Status = "Rejected";
+				}
+			}
+
+			this.getOwnerComponent().getModel("DOB").setProperty("/Leave", newData);
+			this.LeaveActionFragment.close();
+		},
+
+		onPressAssetApprovel: function (oEvent) {
+			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
+			if (newData.Status == "Pending") {
+				var tempNewsCardModel = new sap.ui.model.json.JSONModel();
+				this.getOwnerComponent().setModel(tempNewsCardModel, "/asset");
+				var tempNewsCardArray = [];
+				tempNewsCardArray.push(newData);
+
+				this.getOwnerComponent().getModel("DOB").setProperty("/asset", tempNewsCardArray);
+				var assetActionFragmentId = this.createId("assetActionFragmentId");
+				if (!this.relievingEventFragment) {
+					this.assetActionFragment = new sap.ui.xmlfragment(this.getView().getId(assetActionFragmentId),
+						"MT.SMT_Managment.fragments.assetAction",
+						this);
+					this.getView().addDependent(this.assetActionFragment);
+				}
+				this.assetActionFragment.open();
+			}
+		},
+		onClickAssetApprival: function () {
+			var obj = this.getOwnerComponent().getModel("DOB").getProperty("/asset");
+			var newData = this.getOwnerComponent().getModel("DOB").getProperty("/Asset");
+			for (var i = 0; i < newData.length; i++) {
+				if (obj[0].empId == newData[i].empId && obj[0].AssetName == newData[i].AssetName && obj[0].Status == newData[i].Status && obj[0].assetId ==
+					newData[i].assetId) {
+					newData[i].Status = "Resolved";
+				}
+			}
+			this.getOwnerComponent().getModel("DOB").setProperty("/Asset", newData);
+			this.assetActionFragment.close();
+		},
+		onCloseFragmentAsseteAction: function () {
+			this.assetActionFragment.close();
+		},
 		onSearch: function (oEvent) {
-				debugger;
+				// debugger;
 				var search = oEvent.getParameter("newValue");
 				var oFilterName = new sap.ui.model.Filter(
 					"Reason",

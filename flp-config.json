@@ -1,0 +1,34 @@
+{
+    "application": {
+        "id": "",
+        "title": "MT.SMT_Managment.SMT_Management",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#SMT_Management-Display",
+        "navigationComponentName": "MT.SMT_Managment",
+        "intentSemanticObject": "SMT_Management",
+        "intentAction": "Display",
+        "html5ApplicationName": "smtmanagement",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "5a7654fd-9249-495c-9b34-634e69ea6ce0"
+        ],
+        "contentPackages": [
+            "b6f3a53f-5bf2-47f5-ba09-28278dfdae05"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Title",
+        "subtitle": "Subtitle",
+        "searchKeywords": "Title,Subtitle",
+        "displayIconUrl": "sap-icon://kpi-managing-my-area",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

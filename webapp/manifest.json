@@ -67,7 +67,7 @@
 					"bundleName": "MT.SMT_Managment.i18n.i18n"
 				}
 			},
-			"DOB":{
+			"DOB": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/MockData/data.json"
 			},
@@ -153,14 +153,12 @@
 					"viewName": "managementView",
 					"viewId": "idManagementView",
 					"viewLevel": 1
-				
 				},
 				"TargetDashboardView": {
 					"viewType": "XML",
 					"viewName": "dashboardView",
 					"viewId": "idDashboardView",
 					"viewLevel": 0
-					
 				},
 				"TargetLeaveAssetView": {
 					"viewType": "XML",
@@ -168,5 +166,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }

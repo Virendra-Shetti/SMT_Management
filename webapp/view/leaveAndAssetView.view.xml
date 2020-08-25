@@ -56,7 +56,7 @@
 										</Column>
 									</columns>
 									<items >
-										<ColumnListItem>
+										<ColumnListItem type="Navigation" press="onPressLeaveApprovel">
 											<cells>
 												<Text text="{DOB>empId}"/>
 												<Text text="{DOB>Reason}"/>
@@ -93,12 +93,12 @@
 										</Column>
 									</columns>
 									<items >
-										<ColumnListItem>
+										<ColumnListItem type="Navigation" press="onPressAssetApprovel">
 											<cells>
 												<Text text="{DOB>empId}"/>
 												<Text text="{DOB>assetId}"/>
 												<Text text="{DOB>AssetName}"/>
-												<Text text="{DOB>Date}"/>
+												<Text text="{DOB>Tdate}"/>
 												<Text text="{DOB>Status}"/>
 											</cells>
 										</ColumnListItem>

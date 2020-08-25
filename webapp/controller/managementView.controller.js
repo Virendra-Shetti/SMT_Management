@@ -33,6 +33,21 @@ sap.ui.define([
 			// };
 			// var oModel = new sap.ui.model.odata.ODataModel("sap/opu/odata/sap/ZEMP_MANAGEMENT_SRV");
 			// oModel.read("/EmployeeDetailSet", mParameters);
+			debugger;
+			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Leave");
+			// this.getView().byId("dashboardTotalNumOfEmpButtonId").setProperty("text", DOB.length);
+
+			var notificationData = [];
+			var temp = new sap.ui.model.json.JSONModel();
+			this.getOwnerComponent().setModel(temp, "notificationData");
+			for (var i = 0; i < DOB.length; i++) {
+				if (DOB.Status == "Pending") {
+					notificationData.push(DOB[i]);
+				}
+				// debugger;
+
+			}
+			this.getOwnerComponent().getModel("DOB").setProperty("/notificationData", notificationData);
 		},
 
 		onPressNotification: function (oEvent) {

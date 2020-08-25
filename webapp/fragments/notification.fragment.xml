@@ -2,14 +2,8 @@
 	xmlns:u="sap.ui.unified">
 	<ResponsivePopover title="Notifications" id="fileUploader1" contentWidth="200px" placement="Bottom">
 		<content>
-			<List items="{chart>/Sales}" class="notification">
-				<NotificationListItem title="{chart>DrugName}" description="{chart>Revenue}" showCloseButton="true" close="onItemClose"
-					press="onListItemPress">
-					<buttons>
-						<Button text="Accept" press="onAcceptPress"/>
-						<Button text="Reject" press="onRejectPress"/>
-					</buttons>
-				</NotificationListItem>
+			<List items="{DOB>/notificationData}" class="notification">
+				<NotificationListItem title="{DOB>empId}" description="{DOB>Reason}" showCloseButton="true" close="onItemClose" press="onListItemPress"></NotificationListItem>
 			</List>
 		</content>
 	</ResponsivePopover>
