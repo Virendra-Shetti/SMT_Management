@@ -99,6 +99,7 @@ sap.ui.define([
 		onClickAddEvents: function () {
 
 			var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+			var oModelNotifi = this.getOwnerComponent().getModel("DOB").getProperty("/notificationData") || [];
 			var EmpId = this.getView().byId("addEventsMangFragementId").getValue();
 			var name = this.getView().byId("addEventsMangFragementName").getValue();
 			var date = this.getView().byId("addEventsMangFragementDate").getValue();
@@ -124,7 +125,9 @@ sap.ui.define([
 				eveName: eveName
 			};
 			oModelEvent.push(obj);
+			oModelNotifi.push(obj);
 			this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			this.getOwnerComponent().getModel("DOB").setProperty("/notificationData", oModelNotifi);
 			this.managementEventAddFragment.close();
 		},
 		// Function to close the event fragment...............................................

@@ -3,7 +3,8 @@
 	<ResponsivePopover title="Notifications" id="fileUploader1" contentWidth="200px" placement="Bottom">
 		<content>
 			<List items="{DOB>/notificationData}" class="notification">
-				<NotificationListItem title="{DOB>empId}" description="{DOB>Reason}" showCloseButton="true" close="onItemClose" press="onListItemPress"></NotificationListItem>
+				<NotificationListItem title="{DOB>EmpId}" description="{DOB>eveName}" authorName="{DOB>name}" showCloseButton="true" close="onItemClose"
+					press="onListItemPress"></NotificationListItem>
 			</List>
 		</content>
 	</ResponsivePopover>
