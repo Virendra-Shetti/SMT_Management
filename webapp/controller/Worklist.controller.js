@@ -139,7 +139,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject: function (oItem) {
-			debugger;
+			// debugger;
 			this.getRouter().navTo("object", {
 				objectId: oItem.getBindingContext().getProperty("EmpId")
 			});

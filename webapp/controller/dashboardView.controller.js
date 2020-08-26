@@ -12,7 +12,7 @@ sap.ui.define([
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
 		onInit: function () {
-			debugger;
+			// debugger;
 			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
 
 			var birthDay = [];
@@ -48,7 +48,7 @@ sap.ui.define([
 
 		},
 		onManagementCardClick: function () {
-			debugger;
+			// debugger;
 			this.getRouter().navTo("RouteManagementView");
 		},
 		onLeaveAsset: function () {
@@ -82,7 +82,7 @@ sap.ui.define([
 		// },
 
 		onClickRelievingButton: function (oEvent) {
-			debugger;
+			// debugger;
 
 			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
 			var tempNewsCardModel = new sap.ui.model.json.JSONModel();
@@ -102,7 +102,7 @@ sap.ui.define([
 			this.relievingEventFragment.open();
 		},
 		onCloseFragmentAddEmp: function () {
-			debugger;
+			// debugger;
 			var tempNewsCardArray = [];
 			this.getOwnerComponent().getModel("DOB").setProperty("/Event", tempNewsCardArray);
 
@@ -165,10 +165,10 @@ sap.ui.define([
 			this.relievingEventFragment.close();
 		},
 		onClickdeleteEvent: function (oEvent) {
-			debugger;
+			// debugger;
 
 			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
-			var array = this.getOwnerComponent().getModel("DOB").getProperty("/Events")
+			var array = this.getOwnerComponent().getModel("DOB").getProperty("/Events");
 			for (var i = 0; i < array.length; i++) {
 				if (array[i].EmpId === newData.EmpId) {
 					array.splice(i, 1);

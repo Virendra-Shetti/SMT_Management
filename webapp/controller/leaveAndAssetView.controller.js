@@ -1,8 +1,10 @@
+/* global Quagga:true */
 sap.ui.define([
 	"./BaseController",
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function (BaseController, Controller, History) {
+	"sap/ui/core/routing/History",
+	"sap/m/MessageBox"
+], function (BaseController, Controller, History, MessageBox) {
 	"use strict";
 
 	return BaseController.extend("MT.SMT_Managment.controller.leaveAndAssetView", {
@@ -108,22 +110,184 @@ sap.ui.define([
 			this.assetActionFragment.close();
 		},
 		onSearch: function (oEvent) {
-				// debugger;
-				var search = oEvent.getParameter("newValue");
-				var oFilterName = new sap.ui.model.Filter(
-					"Reason",
-					sap.ui.model.FilterOperator.Contains,
-					search);
+			// debugger;
+			var search = oEvent.getParameter("newValue");
+			var oFilterName = new sap.ui.model.Filter(
+				"Reason",
+				sap.ui.model.FilterOperator.Contains,
+				search);
 
-				var oFilter = new sap.ui.model.Filter({
-					// filters: [oFilterName, oFilterId],
-					filters: [oFilterName],
-					and: false
+			var oFilter = new sap.ui.model.Filter({
+				// filters: [oFilterName, oFilterId],
+				filters: [oFilterName],
+				and: false
+			});
+			var aFilter = [oFilter];
+			// var aFilterId = [oFilterId];
+			var oList = this.getView().byId("idLeaveTable");
+			oList.getBinding("items").filter(aFilter);
+		},
+		onScanForValue: function (oEvent) {
+			if (!this._oScanDialog) {
+				this._oScanDialog = new sap.m.Dialog({
+					title: "Scan barcode",
+					contentWidth: "640px",
+					contentHeight: "480px",
+					horizontalScrolling: false,
+					verticalScrolling: false,
+					stretchOnPhone: true,
+					content: [new sap.ui.core.HTML({
+						id: this.createId("scanContainer"),
+						content: "<div />"
+					})],
+					endButton: new sap.m.Button({
+						text: "Cancel",
+						press: function (oEvent) {
+							this._oScanDialog.close();
+						}.bind(this)
+					}),
+					afterOpen: function () {
+
+						this._initQuagga(this.getView().byId("scanContainer").getDomRef()).done(function () {
+							// Initialisation done, start Quagga
+							Quagga.start();
+						}).fail(function (oError) {
+
+							MessageBox.error(oError.message.length ? oError.message : ("Failed to initialise Quagga with reason code " + oError.name), {
+								onClose: function () {
+									this._oScanDialog.close();
+								}.bind(this)
+							});
+						}.bind(this));
+					}.bind(this),
+					afterClose: function () {
+						// Dialog closed, stop Quagga
+						Quagga.stop();
+					}
 				});
-				var aFilter = [oFilter];
-				// var aFilterId = [oFilterId];
-				var oList = this.getView().byId("idLeaveTable");
-				oList.getBinding("items").filter(aFilter);
+
+				this.getView().addDependent(this._oScanDialog);
+			}
+
+			this._oScanDialog.open();
+		},
+
+		_initQuagga: function (oTarget) {
+			var oDeferred = jQuery.Deferred();
+
+			// Initialise Quagga plugin - see https://serratus.github.io/quaggaJS/#configobject for details
+			Quagga.init({
+				inputStream: {
+					type: "LiveStream",
+					target: oTarget,
+					constraints: {
+						width: {
+							min: 640
+						},
+						height: {
+							min: 480
+						},
+						facingMode: "environment"
+					}
+				},
+				locator: {
+					patchSize: "medium",
+					halfSample: true
+				},
+				numOfWorkers: 2,
+				frequency: 10,
+				decoder: {
+					readers: [{
+						format: "code_128_reader",
+						config: {}
+					}]
+				},
+				locate: true
+			}, function (error) {
+				if (error) {
+					oDeferred.reject(error);
+				} else {
+					oDeferred.resolve();
+				}
+			});
+
+			if (!this._bQuaggaEventHandlersAttached) {
+				// Attach event handlers...
+
+				Quagga.onProcessed(function (result) {
+					var drawingCtx = Quagga.canvas.ctx.overlay,
+						drawingCanvas = Quagga.canvas.dom.overlay;
+
+					if (result) {
+						// The following will attempt to draw boxes around detected barcodes
+						if (result.boxes) {
+							drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+							result.boxes.filter(function (box) {
+								return box !== result.box;
+							}).forEach(function (box) {
+								Quagga.ImageDebug.drawPath(box, {
+									x: 0,
+									y: 1
+								}, drawingCtx, {
+									color: "green",
+									lineWidth: 2
+								});
+							});
+						}
+
+						if (result.box) {
+							Quagga.ImageDebug.drawPath(result.box, {
+								x: 0,
+								y: 1
+							}, drawingCtx, {
+								color: "#00F",
+								lineWidth: 2
+							});
+						}
+
+						if (result.codeResult && result.codeResult.code) {
+							Quagga.ImageDebug.drawPath(result.line, {
+								x: 'x',
+								y: 'y'
+							}, drawingCtx, {
+								color: 'red',
+								lineWidth: 3
+							});
+						}
+					}
+				}.bind(this));
+
+				Quagga.onDetected(function (result) {
+					// debugger;
+					this.getView().byId("scannedValue").setValue(result.codeResult.code);
+					this._oScanDialog.close();
+				}.bind(this));
+
+				this._bQuaggaEventHandlersAttached = true;
+			}
+
+			return oDeferred.promise();
+		},
+		onPress: function (oEvent) {
+				try {
+					// cordova.plugins.BarcodeScanner.scan(
+					sap.ndc.BarcodeScanner.scan(
+						function (mResult) {
+							sap.m.MessageToast.show("We got a bar code\n" +
+								"Result: " + mResult.text + "\n" +
+								"Format: " + mResult.format + "\n" +
+								"Cancelled: " + mResult.cancelled);
+						},
+						function (Error) {
+							sap.m.MessageToast.show("Scanning failed: " + Error);
+						},
+						function (mParams) {
+							sap.m.MessageToast.show("Value entered: " + mParams.newValue);
+						}
+					);
+				} catch (e) {
+					sap.m.MessageToast.show("Not Available");
+				}
 			}
 			/**
 			 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

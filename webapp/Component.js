@@ -1,14 +1,14 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"./model/models",
-	"./controller/ErrorHandler"
-], function (UIComponent, Device, models, ErrorHandler) {
+	"./controller/ErrorHandler",
+	"MT/SMT_Managment/model/models"
+], function (UIComponent, Device, ErrorHandler, models) {
 	"use strict";
 
 	return UIComponent.extend("MT.SMT_Managment.Component", {
 
-		metadata : {
+		metadata: {
 			manifest: "json"
 		},
 
@@ -18,7 +18,7 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
-		init : function () {
+		init: function () {
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
@@ -38,7 +38,7 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
-		destroy : function () {
+		destroy: function () {
 			this._oErrorHandler.destroy();
 			// call the base component's destroy function
 			UIComponent.prototype.destroy.apply(this, arguments);
@@ -50,7 +50,7 @@ sap.ui.define([
 		 * @public
 		 * @return {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
 		 */
-		getContentDensityClass : function() {
+		getContentDensityClass: function () {
 			if (this._sContentDensityClass === undefined) {
 				// check whether FLP has already set the content density class; do nothing in this case
 				// eslint-disable-next-line sap-no-proprietary-browser-api

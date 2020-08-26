@@ -22,10 +22,19 @@
 						<Label/>
 						<Toolbar>
 							<HBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
-								<Button type="Accept" text="Approve" class="sapUiMediumMarginEnd" press="onClickAssetApprival"/>
+								<Label text="Barcode value"/>
+								<Input id="scannedValue" placeholder="{= ${device>/barcodeScanEnabled} ? 'Use scan button to enter barcode' : 'Enter barcode manually' }"
+									editable="{= !${device>/barcodeScanEnabled} }"/>
+								<Button icon="sap-icon://bar-code" text="Scan" tooltip="Scan barcode" visible="{device>/barcodeScanEnabled}" press="onScanForValue">
+									<layoutData>
+										<l:GridData span="L2 M2"/>
+									</layoutData>
+								</Button>
+								<!--<Button type="Accept" text="Approve" class="sapUiMediumMarginEnd" press="onClickAssetApprival"/>-->
 							</HBox>
 						</Toolbar>
-						<Button type="Back" width="100%" text="Cancel" press="onCloseFragmentAsseteAction"></Button>
+						<Button type="Back" width="100%" text="Cancel" press="onPress"></Button>
+						<!--<Button type="Back" width="100%" text="Cancel" press="onCloseFragmentAsseteAction"></Button>-->
 					</VBox>
 				</l:content>
 			</l:VerticalLayout>
