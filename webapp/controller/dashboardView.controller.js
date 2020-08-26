@@ -12,6 +12,7 @@ sap.ui.define([
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
 		onInit: function () {
+			debugger;
 			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
 
 			var birthDay = [];
