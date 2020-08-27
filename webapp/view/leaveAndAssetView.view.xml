@@ -2,7 +2,7 @@
 	controllerName="MT.SMT_Managment.controller.leaveAndAssetView" xmlns:html="http://www.w3.org/1999/xhtml">
 	<App>
 		<pages>
-			<Page title="Title" showHeader="false">
+			<Page>
 				<!--<tnt:ToolHeader>-->
 				<!--	<tnt:ToolHeaderUtilitySeparator/>-->
 				<!--	<ToolbarSpacer>-->
@@ -16,17 +16,19 @@
 				<!--		</layoutData>-->
 				<!--	</Button>-->
 				<!--</tnt:ToolHeader>-->
-				<tnt:ToolHeader>
-					<ToolbarSpacer width="1em"/>
-					<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>
-					<SearchField liveChange="onSearch" width="50%" class="floatLeft"/>
-					<ToolbarSpacer/>
-					<Text class="headerText" text="{i18n>headerSigniwis}"/>
-					<ToolbarSpacer/>
-					<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}" press="onPressLogout"/>
-				</tnt:ToolHeader>
+				<!--<tnt:ToolHeader>-->
+				<!--	<ToolbarSpacer width="1em"/>-->
+				<!--	<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>-->
+				<!--	<ToolbarSpacer/>-->
+				<!--	<Text class="headerText" text="{i18n>headerSigniwis}"/>-->
+				<!--	<ToolbarSpacer/>-->
+				<!--</tnt:ToolHeader>-->
 				<headerContent>
-					<Toolbar id="idDetailPage" width="100%"></Toolbar>
+					<Toolbar id="idDetailPage" width="100%">
+						<Button type="Transparent" icon="sap-icon://nav-back" press="onPressLogout" class="floatLeft"/>
+						<ToolbarSpacer/>
+						<SearchField liveChange="onSearch" width="30%"/>
+					</Toolbar>
 				</headerContent>
 				<content>
 					<IconTabBar id="idIconTabBarNoIcons" class="sapUiResponsiveContentPadding leftPadding" expanded="true">

@@ -2,7 +2,7 @@
 	xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:f="sap.ui.layout.form">
 	<m:App>
 		<m:pages>
-			<m:Page>
+			<m:Page showHeader="false">
 				<m:content>
 					<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true">
 						<headerTitle>
@@ -48,6 +48,7 @@
 									<m:ObjectStatus title="Email" text="Mangement@signiwis.com"/>
 								</layout:VerticalLayout>
 							</m:FlexBox>
+							<m:Button text="click"/>
 						</headerContent>
 						<sections>
 							<ObjectPageSection title="Personal">
