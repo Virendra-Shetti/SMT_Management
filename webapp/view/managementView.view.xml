@@ -22,12 +22,12 @@
 								<snappedContent>
 									<m:Text text="Human resources"/>
 								</snappedContent>
-								<!--<snappedTitleOnMobile>-->
-								<!--	<m:Title text="Header Title On Phone"/>-->
-								<!--</snappedTitleOnMobile>-->
+								<snappedTitleOnMobile>
+									<m:Title text="Header Title On Phone"/>
+								</snappedTitleOnMobile>
 								<actions>
-									<m:Button icon="sap-icon://add" text="Emp" press="onPressAddEmp"/>
-									<m:Button icon="sap-icon://add" text="EVent" press="onPressAddEvent"/>
+									<m:OverflowToolbarButton icon="sap-icon://add" text="Emp" press="onPressAddEmp"/>
+									<m:OverflowToolbarButton icon="sap-icon://add" text="EVent" press="onPressAddEvent"/>
 									<m:OverflowToolbarButton icon="sap-icon://message-popup" press="onPressNotification"/>
 									<m:OverflowToolbarButton icon="sap-icon://log" press="onPressLogout"/>
 								</actions>
