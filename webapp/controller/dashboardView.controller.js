@@ -12,7 +12,8 @@ sap.ui.define([
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
 		onInit: function () {
-			// debugger;
+			debugger;
+			setTimeout(1500);
 			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
 
 			var birthDay = [];
@@ -46,6 +47,72 @@ sap.ui.define([
 			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
 			// debugger;
 
+		},
+
+		// empSalayaNavToFinance: function (oEvent) {
+		// 	debugger;
+		// 	var emp = oEvent.getSource().getBindingContext("DOB").getObject();
+		// 	var financeSalaryCalObj = {
+		// 		Standarddays: emp.EmpId,
+		// 		workeddays: emp.WorkedDays,
+		// 		LOP: emp.LOP,
+		// 		OvertimeHrs: 72
+		// 	};
+		// 	var ocrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
+		// 	// var oAppState = ocrossAppNav.createEmptyAppState(this.getOwnerComponent());
+		// 	// oAppState.setData(financeSalaryCalObj);
+		// 	// oAppState.save();
+
+		// 	ocrossAppNav.isIntentSupport(["smtfinance-Display"])
+		// 		.donw(function (aResponses) {
+
+		// 		})
+		// 		.fail(function () {
+
+		// 		});
+		// 	var hash = (ocrossAppNav && ocrossAppNav.hrefForExternal({
+		// 		target: {
+		// 			semanticObject: "smtfinance", //fiori app semantic obj financeSalaryCalObj
+		// 			action: "Display"
+		// 		},
+		// 		params: {
+		// 			"semanticData": financeSalaryCalObj
+		// 		}
+		// 		// appStateKey: oAppState.getKey()
+		// 	})) || "";
+
+		// 	//Generate URL for the second application
+
+		// 	var url = window.location.href.split("#")[0] + hash;
+
+		// 	//navigate to second app
+
+		// 	sap.m.URLHelper.redirect(url, true);
+		// },
+		empSalayaNavToFinance: function (oEvent) {
+			debugger;
+			var emp = oEvent.getSource().getBindingContext("DOB").getObject();
+			var financeSalaryCalObj = {
+				Standarddays: emp.EmpId,
+				workeddays: emp.WorkedDays,
+				LOP: emp.LOP,
+				OvertimeHrs: 72
+			};
+			// var ocrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
+			// var oAppState = ocrossAppNav.createEmptyAppState(this.getOwnerComponent());
+			// oAppState.setData(financeSalaryCalObj);
+			// oAppState.save();
+			// this.getCrossAppNav();
+			sap.ushell.Container.getService("CrossApplicationNavigation").toExternal({
+				target: {
+					semanticObject: "smtfinance", //fiori app semantic obj financeSalaryCalObj
+					action: "Display"
+				},
+				params: {
+					"semanticData": financeSalaryCalObj
+				}
+				// appStateKey: oAppState.getKey()
+			});
 		},
 		onManagementCardClick: function () {
 			// debugger;
