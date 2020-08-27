@@ -12,6 +12,7 @@ sap.ui.define([
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
 		onInit: function () {
+			// debugger;
 			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
 
 			var birthDay = [];
@@ -47,7 +48,7 @@ sap.ui.define([
 
 		},
 		onManagementCardClick: function () {
-			debugger;
+			// debugger;
 			this.getRouter().navTo("RouteManagementView");
 		},
 		onLeaveAsset: function () {
@@ -81,7 +82,7 @@ sap.ui.define([
 		// },
 
 		onClickRelievingButton: function (oEvent) {
-			debugger;
+			// debugger;
 
 			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
 			var tempNewsCardModel = new sap.ui.model.json.JSONModel();
@@ -101,7 +102,7 @@ sap.ui.define([
 			this.relievingEventFragment.open();
 		},
 		onCloseFragmentAddEmp: function () {
-			debugger;
+			// debugger;
 			var tempNewsCardArray = [];
 			this.getOwnerComponent().getModel("DOB").setProperty("/Event", tempNewsCardArray);
 
@@ -140,6 +141,7 @@ sap.ui.define([
 		onClickAddEvents: function () {
 
 			var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+			var oModelNotifi = this.getOwnerComponent().getModel("DOB").getProperty("/notificationData") || [];
 			var EmpId = this.getView().byId("addEventsEmpFragementId").getValue();
 			var name = this.getView().byId("addEventsEmpFragementName").getValue();
 			var date = this.getView().byId("addEventsEmpFragementDate").getValue();
@@ -160,14 +162,16 @@ sap.ui.define([
 				eveName: eveName
 			};
 			oModelEvent.push(obj);
+			oModelNotifi.push(obj);
 			this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			this.getOwnerComponent().getModel("DOB").setProperty("/notificationData", oModelNotifi);
 			this.relievingEventFragment.close();
 		},
 		onClickdeleteEvent: function (oEvent) {
-			debugger;
+			// debugger;
 
 			var newData = oEvent.getSource().getBindingContext("DOB").getObject();
-			var array = this.getOwnerComponent().getModel("DOB").getProperty("/Events")
+			var array = this.getOwnerComponent().getModel("DOB").getProperty("/Events");
 			for (var i = 0; i < array.length; i++) {
 				if (array[i].EmpId === newData.EmpId) {
 					array.splice(i, 1);

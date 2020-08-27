@@ -9,7 +9,6 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"resources": "resources.json",
 		"dataSources": {
 			"mainService": {
 				"uri": "/",
@@ -75,6 +74,18 @@
 				"dataSource": "mainService",
 				"preload": true
 			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "libs/quagga.min.js"
+				}
+			]
 		},
 		"routing": {
 			"config": {

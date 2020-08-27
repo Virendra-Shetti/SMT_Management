@@ -8,15 +8,15 @@
         "navigationComponentName": "MT.SMT_Managment",
         "intentSemanticObject": "SMT_Management",
         "intentAction": "Display",
-        "html5ApplicationName": "smtmanagement",
+        "html5ApplicationName": "smtmanagement2",
         "HCPParentApplicationName": ""
     },
     "assignment": {
         "groups": [
-            "5a7654fd-9249-495c-9b34-634e69ea6ce0"
+            "b8423ac0-9afa-4ff1-81a4-e441a091ee3a"
         ],
         "contentPackages": [
-            "b6f3a53f-5bf2-47f5-ba09-28278dfdae05"
+            "9a56a34a-7581-4665-a67b-a738831c396c"
         ],
         "categories": []
     },
@@ -25,7 +25,7 @@
         "title": "Title",
         "subtitle": "Subtitle",
         "searchKeywords": "Title,Subtitle",
-        "displayIconUrl": "sap-icon://kpi-managing-my-area",
+        "displayIconUrl": "sap-icon://approvals",
         "displayInfoText": "",
         "size": "1x1",
         "serviceURL": "",
