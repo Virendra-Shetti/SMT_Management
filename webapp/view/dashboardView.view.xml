@@ -2,9 +2,9 @@
 	controllerName="MT.SMT_Managment.controller.dashboardView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f"
 	xmlns:card="sap.f.cards">
 	<App>
-		<pages>
+		<pages >
 			<Page showHeader="false">
-				<content>
+				<content >
 					<!--<tnt:ToolHeader>-->
 					<!--	<Text text="attendance summary - Aug 17 to Aug 23"/>-->
 					<!--	<tnt:ToolHeaderUtilitySeparator/>-->

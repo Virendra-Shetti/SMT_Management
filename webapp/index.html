@@ -16,17 +16,7 @@
 			data-sap-ui-async="true"
 			data-sap-ui-frameOptions="trusted">
 	</script>
-<script>
-			sap.ui.getCore().attachInit(function() {
-				new sap.m.Shell({
-					app: new sap.ui.core.ComponentContainer({
-						height  : "100%",
-						name 	: "barcodeScanner"
-					})
-				}).placeAt("content");
-			});
-		</script>
-		<script src="/sap/public/bc/ui5_ui5/resources/sap/ushell_abap/bootstrap/abap.js"></script>
+
 </head>
 <body class="sapUiBody" id="content">
 	<div data-sap-ui-component data-name="MT.SMT_Managment" data-id="container" data-settings='{"id" : "SMT_Managment"}'></div>

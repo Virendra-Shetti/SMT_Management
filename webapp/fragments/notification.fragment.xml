@@ -1,10 +1,9 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified">
-	<ResponsivePopover title="Notifications" id="fileUploader1" contentWidth="200px" placement="Bottom">
+	<ResponsivePopover title="{i18n>Notifications}" id="fileUploader1" contentWidth="200px" placement="Bottom">
 		<content>
-			<List items="{DOB>/notificationData}" class="notification">
-				<NotificationListItem title="{DOB>EmpId}" description="{DOB>eveName}" authorName="{DOB>name}" showCloseButton="true" close="onItemClose"
-					press="onListItemPress"></NotificationListItem>
+			<List items="{DOB>/notificationDatas}" class="notification">
+				<StandardListItem title="{DOB>EmpId}" press="onNotificationTimeSheetPress"></StandardListItem>
 			</List>
 		</content>
 	</ResponsivePopover>

@@ -50,6 +50,61 @@ sap.ui.define([
 			this.getOwnerComponent().getModel("DOB").setProperty("/notificationData", notificationData);
 		},
 
+		onNotificationTimeSheetPress: function (oEvent) {
+			debugger;
+
+			var RequestFileFragmentId = this.createId("RequestFileFragmentId");
+			if (!this.RequestFileFragment) {
+				this.RequestFileFragment = new sap.ui.xmlfragment(this.getView().getId(RequestFileFragmentId),
+					"MT.SMT_Managment.fragments.requestResponse",
+					this);
+				this.getView().addDependent(this.RequestFileFragment);
+			}
+			this.RequestFileFragment.open();
+			var notifiObj = oEvent.getSource().getBindingContext("DOB").getObject();
+			this.getView().byId("RequestEmpiId").setText(notifiObj.EmpId);
+
+			this.getView().byId("RequestEmpNameId").setText(notifiObj.empName);
+			this.getView().byId("RequestFileId").setText(notifiObj.requestFile);
+			this.getView().byId("RequestFileUploader").setValue("");
+			var temp = this.getView().byId("RequestEmpiId").getText();
+			if (temp == "") {
+				this.RequestFileFragment.close();
+			}
+
+		},
+		onCloseRequestFragment: function () {
+			this.RequestFileFragment.close();
+
+		},
+
+		onUploadFile: function () {
+			// debugger;
+			this.File = this.getView().byId("RequestFileUploader").oFileUpload.files[0];
+			this.filePath = URL.createObjectURL(this.File);
+		},
+		onRequestFileSend: function () {
+			debugger;
+			var oModelRequests = this.getOwnerComponent().getModel("DOB").getProperty("/notificationDatas");
+			var oModelTimeSheet = this.getOwnerComponent().getModel("DOB").getProperty("/TimeSheet") || [];
+			var employeeId = this.getView().byId("RequestEmpiId").getText();
+			var obj = {
+				empId: employeeId,
+				empName: this.getView().byId("RequestEmpNameId").getText(),
+				TimesheetName: "TimeSheet",
+				filePath: this.filePath
+			};
+			oModelTimeSheet.push(obj);
+			this.getOwnerComponent().getModel("DOB").setProperty("/TimeSheet", oModelTimeSheet);
+
+			for (var i = 0; i < oModelRequests.length; i++) {
+				if (oModelRequests[i].EmpId == employeeId) {
+					oModelRequests[i].File = this.filePath;
+				}
+			}
+			this.RequestFileFragment.close();
+		},
+
 		onPressNotification: function (oEvent) {
 			var oButton = oEvent.getSource();
 
