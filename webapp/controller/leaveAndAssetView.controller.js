@@ -269,24 +269,34 @@ sap.ui.define([
 			return oDeferred.promise();
 		},
 		onPress: function (oEvent) {
-				try {
-					// cordova.plugins.BarcodeScanner.scan(
-					sap.ndc.BarcodeScanner.scan(
-						function (mResult) {
-							sap.m.MessageToast.show("We got a bar code\n" +
-								"Result: " + mResult.text + "\n" +
-								"Format: " + mResult.format + "\n" +
-								"Cancelled: " + mResult.cancelled);
-						},
-						function (Error) {
-							sap.m.MessageToast.show("Scanning failed: " + Error);
-						},
-						function (mParams) {
-							sap.m.MessageToast.show("Value entered: " + mParams.newValue);
-						}
-					);
-				} catch (e) {
-					sap.m.MessageToast.show("Not Available");
+			try {
+				// cordova.plugins.BarcodeScanner.scan(
+				sap.ndc.BarcodeScanner.scan(
+					function (mResult) {
+						sap.m.MessageToast.show("We got a bar code\n" +
+							"Result: " + mResult.text + "\n" +
+							"Format: " + mResult.format + "\n" +
+							"Cancelled: " + mResult.cancelled);
+					},
+					function (Error) {
+						sap.m.MessageToast.show("Scanning failed: " + Error);
+					},
+					function (mParams) {
+						sap.m.MessageToast.show("Value entered: " + mParams.newValue);
+					}
+				);
+			} catch (e) {
+				sap.m.MessageToast.show("Not Available");
+			}
+		},
+		onPressTimeSheetApprovel: function (oEvent) {
+				debugger;
+				var dltApprovedTimesheetEmployeeObject = oEvent.getSource().getBindingContext("DOB").getObject();
+				var oModelTimeSheet = this.getOwnerComponent().getModel("DOB").getProperty("/TimeSheet");
+				for (var i = 0; i < oModelTimeSheet.length; i++) {
+					if (oModelTimeSheet[i].EmpId == dltApprovedTimesheetEmployeeObject.EmpId)
+						oModelTimeSheet.splice(i, 1);
+					this.getOwnerComponent().getModel("DOB").setProperty("/TimeSheet", oModelTimeSheet);
 				}
 			}
 			/**

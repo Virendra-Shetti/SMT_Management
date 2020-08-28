@@ -12,8 +12,15 @@ sap.ui.define([
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
 		onInit: function () {
+			// debugger;
+
+			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
+			this.Router.attachRoutePatternMatched(this.oNloadOfView, this);
+			// debugger;
+
+		},
+		oNloadOfView: function () {
 			debugger;
-			setTimeout(1500);
 			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
 
 			var birthDay = [];
@@ -44,11 +51,7 @@ sap.ui.define([
 
 			this.getOwnerComponent().getModel("DOB").setProperty("/birthDay", birthDay);
 
-			this.Router = sap.ui.core.UIComponent.getRouterFor(this);
-			// debugger;
-
 		},
-
 		// empSalayaNavToFinance: function (oEvent) {
 		// 	debugger;
 		// 	var emp = oEvent.getSource().getBindingContext("DOB").getObject();
@@ -89,15 +92,19 @@ sap.ui.define([
 
 		// 	sap.m.URLHelper.redirect(url, true);
 		// },
+
+		// navigating to finance application
 		empSalayaNavToFinance: function (oEvent) {
 			debugger;
 			var emp = oEvent.getSource().getBindingContext("DOB").getObject();
 			var financeSalaryCalObj = {
-				Standarddays: emp.EmpId,
+				empId: emp.EmpId,
+				Standarddays: emp.StandardDays,
 				workeddays: emp.WorkedDays,
 				LOP: emp.LOP,
 				OvertimeHrs: 72
 			};
+			var finacenavData = JSON.stringify(financeSalaryCalObj);
 			// var ocrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
 			// var oAppState = ocrossAppNav.createEmptyAppState(this.getOwnerComponent());
 			// oAppState.setData(financeSalaryCalObj);
@@ -109,7 +116,7 @@ sap.ui.define([
 					action: "Display"
 				},
 				params: {
-					"semanticData": financeSalaryCalObj
+					"semanticData": finacenavData
 				}
 				// appStateKey: oAppState.getKey()
 			});
@@ -265,37 +272,37 @@ sap.ui.define([
 		 * This hook is the same one that SAPUI5 controls get after being rendered.
 		 * @memberOf MT.SMT_Managment.view.dashboardView
 		 */
-		onAfterRendering: function () {
-			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
+		// onAfterRendering: function () {
+		// 	var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Employee");
 
-			var birthDay = [];
-			var Relieving = [];
-			var anualData = [];
-			var temp = new sap.ui.model.json.JSONModel();
-			this.getOwnerComponent().setModel(temp, "thisMonth");
-			for (var i = 0; i < DOB.length; i++) {
-				var month = DOB[i].date.slice(3, 5);
-				if (month == "08") {
-					birthDay.push(DOB[i]);
-				}
-				// debugger;
-				var year = DOB[i].endDate.slice(6);
-				if (year == "2020") {
-					Relieving.push(DOB[i]);
-				}
-				var anual = DOB[i].startDate.slice(3, 5);
-				if (anual == "08") {
-					anualData.push(DOB[i]);
-				}
+		// 	var birthDay = [];
+		// 	var Relieving = [];
+		// 	var anualData = [];
+		// 	var temp = new sap.ui.model.json.JSONModel();
+		// 	this.getOwnerComponent().setModel(temp, "thisMonth");
+		// 	for (var i = 0; i < DOB.length; i++) {
+		// 		var month = DOB[i].date.slice(3, 5);
+		// 		if (month == "08") {
+		// 			birthDay.push(DOB[i]);
+		// 		}
+		// 		// debugger;
+		// 		var year = DOB[i].endDate.slice(6);
+		// 		if (year == "2020") {
+		// 			Relieving.push(DOB[i]);
+		// 		}
+		// 		var anual = DOB[i].startDate.slice(3, 5);
+		// 		if (anual == "08") {
+		// 			anualData.push(DOB[i]);
+		// 		}
 
-			}
-			// debugger;
-			this.getOwnerComponent().getModel("DOB").setProperty("/anualData", anualData);
+		// 	}
+		// 	// debugger;
+		// 	this.getOwnerComponent().getModel("DOB").setProperty("/anualData", anualData);
 
-			this.getOwnerComponent().getModel("DOB").setProperty("/Relieving", Relieving);
+		// 	this.getOwnerComponent().getModel("DOB").setProperty("/Relieving", Relieving);
 
-			this.getOwnerComponent().getModel("DOB").setProperty("/birthDay", birthDay);
-		}
+		// 	this.getOwnerComponent().getModel("DOB").setProperty("/birthDay", birthDay);
+		// }
 
 		/**
 		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

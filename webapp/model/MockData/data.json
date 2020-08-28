@@ -245,78 +245,31 @@
 			"date": "13-09-1993"
 		}
 	],
-	"Employee1": [{
+	"notificationDatas": [{
 		"EmpId": "100",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/Anime-Boys-Drawception-Profile.jpg",
-		"Department": "UI5 developer",
-		"Email": "santosh@signiwis.com",
-		"startDate": "12-09-2018",
-		"endDate": "12-09-2021",
-		"empName": "Santosh",
-		"date": "14-07-1997"
+		"File": "",
+		"requestFile": "Time Sheet",
+		"empName": "Santosh"
 	}, {
 		"EmpId": "101",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/Anime-Guy-Profile-Picture.png",
-		"Department": "UI5 developer",
-		"Email": "rahul@signiwis.com",
-		"startDate": "17-01-2018",
-		"endDate": "17-01-2021",
-		"empName": "Rahul",
-		"date": "20-08-1994"
+		"File": "",
+		"requestFile": "TimeSheet",
+		"empName": "Rahul"
 	}, {
 		"EmpId": "200",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/Pin-by-ian-on-profile-pics-in-2019-Cute-anime-boy-.jpg",
-		"Department": "ABAP developer",
-		"Email": "sunil@signiwis.com",
-		"startDate": "29-04-2019",
-		"endDate": "29-04-2022",
-		"empName": "Sunil",
-		"date": "25-01-1991"
+		"File": "",
+		"requestFile": "SSCL Marks Card",
+		"empName": "Sunil"
 	}, {
 		"EmpId": "201",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/228-Best-Anime-Profile-Pictures-images-in-2019-Anime-.jpg",
-		"Department": "ABAP developer",
-		"Email": "manjunath.m@signiwis.com",
-		"startDate": "08-08-2018",
-		"endDate": "08-07-2021",
-		"empName": "Manjunath M",
-		"date": "01-04-1995"
+		"File": "",
+		"requestFile": "Pay Slip",
+		"empName": "Manjunath M"
 	}, {
 		"EmpId": "203",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/204-images-about-Matching-profile-pictures-dTdd-on-We-.jpg",
-		"Department": "ABAP developer",
-		"Email": "Baswaraj@signiwis.com",
-		"startDate": "13-12-2016",
-		"endDate": "13-12-2020",
-		"empName": "Baswaraj",
-		"date": "19-08-1992"
-	}, {
-		"EmpId": "300",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/Anime-BoydL-otaku953-Instagram-Profile-Toopics.jpg",
-		"Department": "oData developer",
-		"Email": "kartik@signiwis.com",
-		"startDate": "06-09-2016",
-		"endDate": "06-09-2020",
-		"empName": "kartik",
-		"date": "29-08-1991"
-	}, {
-		"EmpId": "Emp07",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/AAC-Profile-Challenge-Anime-Amino.jpg",
-		"Department": "oData developer",
-		"Email": "ashok@signiwis.com",
-		"startDate": "07-09-2016",
-		"endDate": "07-09-2020",
-		"empName": "Ashok",
-		"date": "10-06-1990"
-	}, {
-		"EmpId": "400",
-		"image": "https://cutewallpaper.org/21/anime-profile-pictures-boy/Boy-Forum-Avatar-Profile-Photo-ID-165124-Avatar-Abyss.jpg",
-		"Department": "Tester",
-		"Email": "Abbasi@signiwis.com",
-		"startDate": "12-12-2016",
-		"endDate": "12-12-2020",
-		"empName": "Abbasi",
-		"date": "12-09-1993"
+		"File": "",
+		"requestFile": "Pay Slip",
+		"empName": "Baswaraj"
 	}],
 	"Leave": [{
 		"empId": "102",

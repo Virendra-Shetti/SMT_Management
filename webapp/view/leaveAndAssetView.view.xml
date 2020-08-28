@@ -3,26 +3,6 @@
 	<App>
 		<pages>
 			<Page>
-				<!--<tnt:ToolHeader>-->
-				<!--	<tnt:ToolHeaderUtilitySeparator/>-->
-				<!--	<ToolbarSpacer>-->
-				<!--		<layoutData>-->
-				<!--			<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>-->
-				<!--		</layoutData>-->
-				<!--	</ToolbarSpacer>-->
-				<!--	<Button icon="sap-icon://log" press="onPressLogout">-->
-				<!--		<layoutData>-->
-				<!--			<OverflowToolbarLayoutData priority="NeverOverflow"/>-->
-				<!--		</layoutData>-->
-				<!--	</Button>-->
-				<!--</tnt:ToolHeader>-->
-				<!--<tnt:ToolHeader>-->
-				<!--	<ToolbarSpacer width="1em"/>-->
-				<!--	<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>-->
-				<!--	<ToolbarSpacer/>-->
-				<!--	<Text class="headerText" text="{i18n>headerSigniwis}"/>-->
-				<!--	<ToolbarSpacer/>-->
-				<!--</tnt:ToolHeader>-->
 				<headerContent>
 					<Toolbar id="idDetailPage" width="100%">
 						<Button type="Transparent" icon="sap-icon://nav-back" press="onPressLogout" class="floatLeft"/>
@@ -33,7 +13,7 @@
 				<content>
 					<IconTabBar id="idIconTabBarNoIcons" class="sapUiResponsiveContentPadding leftPadding" expanded="true">
 						<items>
-							<IconTabFilter class="leftPadding" text="Leave">
+							<IconTabFilter class="leftPadding" text="{i18n>LeavePageLeave}">
 								<Table id="idLeaveTable" inset="false" items="{DOB>/Leave}">
 									<infoToolbar>
 										<OverflowToolbar>
@@ -70,7 +50,7 @@
 									</items>
 								</Table>
 							</IconTabFilter>
-							<IconTabFilter class="leftPadding" text="Asset">
+							<IconTabFilter class="leftPadding" text="{i18n>LeavePageAsset}">
 								<Table id="idAssetsTable" inset="false" items="{DOB>/Asset}">
 									<infoToolbar>
 										<OverflowToolbar>
@@ -102,6 +82,43 @@
 												<Text text="{DOB>AssetName}"/>
 												<Text text="{DOB>Tdate}"/>
 												<Text text="{DOB>Status}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter class="leftPadding" text="{i18n>LeavePageTimeSheet}">
+								<Table id="idTimeSheetTable" inset="false" items="{DOB>/TimeSheet}">
+									<infoToolbar>
+										<OverflowToolbar>
+											<Label text="{i18n>LeavePageTimesheet}"/>
+										</OverflowToolbar>
+									</infoToolbar>
+									<columns>
+										<Column width="12em">
+											<Text text="{i18n>LeavePageEmployeeId}"/>
+										</Column>
+										<Column minScreenWidth="Tablet" demandPopin="true">
+											<Text text="{i18n>LeavePageEmployeeName}"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+											<Text text="{i18n>LeavePageTimeSheetDownload}"/>
+										</Column>
+										<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+											<Text text="{i18n>LeavePageTimesheetApprove}"/>
+										</Column>
+										<Column hAlign="End">
+											<Text text="{i18n>LeavePageTimesheetReject}"/>
+										</Column>
+									</columns>
+									<items >
+										<ColumnListItem type="Navigation">
+											<cells>
+												<Text text="{DOB>empId}"/>
+												<Text text="{DOB>empName}"/>
+												<Link href="{DOB>filePath}" text="{i18n>LeavePageTimeSheetDownload}"/>
+												<Button text="{i18n>LeavePageTimesheetApprove}" press="onPressTimeSheetApprovel"/>
+												<Button text="{i18n>LeavePageTimesheetReject}"/>
 											</cells>
 										</ColumnListItem>
 									</items>
