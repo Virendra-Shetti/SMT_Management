@@ -1,44 +1,46 @@
-<mvc:View controllerName="MT.SMT_Managment.controller.Object" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic">
-	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}"
-		busyIndicatorDelay="{objectView>/delay}">
+<mvc:View controllerName="MT.SMT_Managment.controller.Object" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+	<semantic:SemanticPage id="page" headerPinnable="true" toggleHeaderOnTitleClick="false" titleAreaShrinkRatio="1:1.6:1.6"
+		busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
 		<semantic:titleHeading>
-			<Title text="{EmployeeID}" level="H2"/>
-		</semantic:titleHeading>
-		<semantic:titleContent>
-			
 			<Title text="Employee Details" level="H3"/>
-		</semantic:titleContent>
-		
+		</semantic:titleHeading>
+		<!--<semantic:titleContent >
+			<Title textAlign="Center" text="Employee Details"  level="H3"/>
+		</semantic:titleContent>-->
+		<semantic:titleSnappedContent>
+			<Text text="Details Of {EmpName}"/>
+		</semantic:titleSnappedContent>
 		<semantic:headerContent>
-			<HBox alignContent="Start" alignItems="Start" justifyContent="Start">
-				<Avatar src="{image}"/>
-				</HBox>
-				
-	    <VBox alignContent="Start" alignItems="Start" justifyContent="Start">
-		<ObjectStatus title="EmpLoyee Id" text="{EmpId}" />
-		<Label width="40%"/>
-		<ObjectStatus title="Employee Name" text="{empName}"/>
-	
-		</VBox>
-		
+			<layout:HorizontalLayout allowWrapping="true">
+				<layout:VerticalLayout class="sapUiMediumMarginEnd">
+					<Avatar src="{image}"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiMediumMarginEnd">
+					<ObjectAttribute title="Employee ID" text="{EmpId}"/>
+					<ObjectAttribute title="Employee Name" text="{EmpName}"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiMediumMarginEnd">
+					<ObjectAttribute title="Phone Number" text="{phoneNumber}"/>
+					<ObjectAttribute title="Email address" text="{EmailId}"/>
+				</layout:VerticalLayout>
+			</layout:HorizontalLayout>
 		</semantic:headerContent>
 		<semantic:content>
-				<List>
-
-				
-				<DisplayListItem
-					label="Address"
-					value="{Addre}" />
-				<DisplayListItem
-					label="Skills"
-					value="{skils}"
-					/>
-				<DisplayListItem
-					label="Projects"
-					value="{projects}" 
-					/>
+			<List headerText="Salary Account And Basic Details">
+				<DisplayListItem label="Designation" value="{Designation}"/>
+				<DisplayListItem label="Standard Days" value="{StandardDays}"/>
+				<DisplayListItem label="Worked Days" value="{WorkedDays}"/>
+				<DisplayListItem label="Night Shifts" value="{nightShift}"/>
+				<DisplayListItem label="Bank Name" value="{BankName}"/>
+				<DisplayListItem label="IFSC Code" value="{IFSCCode}"/>
+				<DisplayListItem label="PAN Card Number" value="{PANNo}"/>
+				<DisplayListItem label="Basic Salary" value="Rs {BasicSalary}"/>
 			</List>
 		</semantic:content>
+		<semantic:titleMainAction>
+			<semantic:TitleMainAction text="{Department}" enabled="false"/>
+		</semantic:titleMainAction>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
 		</semantic:sendEmailAction>

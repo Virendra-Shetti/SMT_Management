@@ -10,14 +10,21 @@
 				</Key>
 				<Property xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="EmpId" Type="Edm.Int32" Nullable="false"
 					p6:StoreGeneratedPattern="Identity"/>
-				<Property Name="empName" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true"/>
+				<Property Name="EmpName" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true"/>
 				<Property Name="Department" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
-				<Property Name="Email" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
-				<Property Name="startDate" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
-				<Property Name="endDate" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
-				<Property Name="date" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="EmailId" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="BasicSalary" Type="Edm.String" MaxLength="11" FixedLength="false" Unicode="true"/>
+				<Property Name="phoneNumber" Type="Edm.String" MaxLength="11" FixedLength="false" Unicode="true"/>
+				<Property Name="PANNo" Type="Edm.String" MaxLength="10" FixedLength="false" Unicode="true"/>
 				<Property Name="image" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false"/>
-				<Property Name="Addre" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
+				<Property Name="Designation" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
+				<Property Name="IFSCCode" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="true"/>
+				<Property Name="WorkedDays" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="Allowance" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="StandardDays" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="nightShift" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="LOP" Type="Edm.String" MaxLength="4" FixedLength="false" Unicode="true"/>
+				<Property Name="BankName" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true"/>
 				<!--<NavigationProperty Name="Employees1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees1" FromRole="Employees"/>
 			<NavigationProperty Name="Employee1" Relationship="NorthwindModel.FK_Employees_Employees" ToRole="Employees" FromRole="Employees1"/>
 			<NavigationProperty Name="Orders" Relationship="NorthwindModel.FK_Orders_Employees" ToRole="Orders" FromRole="Employees"/>
