@@ -33,6 +33,76 @@ sap.ui.define([
 			// };
 			// var oModel = new sap.ui.model.odata.ODataModel("sap/opu/odata/sap/ZEMP_MANAGEMENT_SRV");
 			// oModel.read("/EmployeeDetailSet", mParameters);
+			// debugger;
+			var DOB = this.getOwnerComponent().getModel("DOB").getProperty("/Leave");
+			// this.getView().byId("dashboardTotalNumOfEmpButtonId").setProperty("text", DOB.length);
+
+			var notificationData = [];
+			var temp = new sap.ui.model.json.JSONModel();
+			this.getOwnerComponent().setModel(temp, "notificationData");
+			for (var i = 0; i < DOB.length; i++) {
+				if (DOB.Status == "Pending") {
+					notificationData.push(DOB[i]);
+				}
+				// debugger;
+
+			}
+			this.getOwnerComponent().getModel("DOB").setProperty("/notificationData", notificationData);
+		},
+
+		onNotificationTimeSheetPress: function (oEvent) {
+			debugger;
+
+			var RequestFileFragmentId = this.createId("RequestFileFragmentId");
+			if (!this.RequestFileFragment) {
+				this.RequestFileFragment = new sap.ui.xmlfragment(this.getView().getId(RequestFileFragmentId),
+					"MT.SMT_Managment.fragments.requestResponse",
+					this);
+				this.getView().addDependent(this.RequestFileFragment);
+			}
+			this.RequestFileFragment.open();
+			var notifiObj = oEvent.getSource().getBindingContext("DOB").getObject();
+			this.getView().byId("RequestEmpiId").setText(notifiObj.EmpId);
+
+			this.getView().byId("RequestEmpNameId").setText(notifiObj.empName);
+			this.getView().byId("RequestFileId").setText(notifiObj.requestFile);
+			this.getView().byId("RequestFileUploader").setValue("");
+			var temp = this.getView().byId("RequestEmpiId").getText();
+			if (temp == "") {
+				this.RequestFileFragment.close();
+			}
+
+		},
+		onCloseRequestFragment: function () {
+			this.RequestFileFragment.close();
+
+		},
+
+		onUploadFile: function () {
+			// debugger;
+			this.File = this.getView().byId("RequestFileUploader").oFileUpload.files[0];
+			this.filePath = URL.createObjectURL(this.File);
+		},
+		onRequestFileSend: function () {
+			debugger;
+			var oModelRequests = this.getOwnerComponent().getModel("DOB").getProperty("/notificationDatas");
+			var oModelTimeSheet = this.getOwnerComponent().getModel("DOB").getProperty("/TimeSheet") || [];
+			var employeeId = this.getView().byId("RequestEmpiId").getText();
+			var obj = {
+				empId: employeeId,
+				empName: this.getView().byId("RequestEmpNameId").getText(),
+				TimesheetName: "TimeSheet",
+				filePath: this.filePath
+			};
+			oModelTimeSheet.push(obj);
+			this.getOwnerComponent().getModel("DOB").setProperty("/TimeSheet", oModelTimeSheet);
+
+			for (var i = 0; i < oModelRequests.length; i++) {
+				if (oModelRequests[i].EmpId == employeeId) {
+					oModelRequests[i].File = this.filePath;
+				}
+			}
+			this.RequestFileFragment.close();
 		},
 
 		onPressNotification: function (oEvent) {
@@ -90,6 +160,7 @@ sap.ui.define([
 		onClickAddEvents: function () {
 
 			var oModelEvent = this.getOwnerComponent().getModel("DOB").getProperty("/Events") || [];
+			var oModelNotifi = this.getOwnerComponent().getModel("DOB").getProperty("/notificationData") || [];
 			var EmpId = this.getView().byId("addEventsMangFragementId").getValue();
 			var name = this.getView().byId("addEventsMangFragementName").getValue();
 			var date = this.getView().byId("addEventsMangFragementDate").getValue();
@@ -115,7 +186,9 @@ sap.ui.define([
 				eveName: eveName
 			};
 			oModelEvent.push(obj);
+			oModelNotifi.push(obj);
 			this.getOwnerComponent().getModel("DOB").setProperty("/Events", oModelEvent);
+			this.getOwnerComponent().getModel("DOB").setProperty("/notificationData", oModelNotifi);
 			this.managementEventAddFragment.close();
 		},
 		// Function to close the event fragment...............................................
@@ -180,7 +253,7 @@ sap.ui.define([
 			var vnex = 0;
 			var enex = 0;
 
-			debugger;
+			// debugger;
 			container.forEach(eVaild);
 
 			function eVaild(ids, index) {
@@ -206,7 +279,7 @@ sap.ui.define([
 
 			new validator().validateFragFields.validFields.apply(validFields);
 			var preLen = lSid.length;
-			if (valid.length >= preLen && valid !="") {
+			if (valid.length >= preLen && valid != "") {
 				var EmpId = this.getView().byId("empAddFId").getValue();
 				var Name = this.getView().byId(valid[0]).getValue() + " " + this.getView().byId(valid[1]).getValue();
 				// var LName = this.getView().byId("lNameFId").getValue();
@@ -236,7 +309,7 @@ sap.ui.define([
 				var array = this.getView().getModel("DOB").getProperty("/Employee");
 				array.push(obj);
 				this.getView().getModel("DOB").setProperty("/Employee", array);
-				debugger;
+				// debugger;
 				var closeEmpFrag = {
 					"that": this,
 					"fragClose": this.empAddFragment,
@@ -253,28 +326,28 @@ sap.ui.define([
 		},
 
 		onFname: function (oEvent) {
-			debugger;
+			// debugger;
 			this._getFname = oEvent.getSource();
 			new validator().validatingFields(this._getFname);
 			//	this._getFildData(this._getFname);
 		},
 		onLname: function (oEvent) {
-			debugger;
+			// debugger;
 			var getLname = oEvent.getSource();
 			new validator().validatingFields(getLname);
 		},
 		onDepart: function (oEvent) {
-			debugger;
+			// debugger;
 			var getDepart = oEvent.getSource();
 			new validator().validatingFields(getDepart);
 		},
 		onPos: function (oEvent) {
-			debugger;
+			// debugger;
 			var getPos = oEvent.getSource();
 			new validator().validatingFields(getPos);
 		},
 		onEmail: function (oEvent) {
-			debugger;
+			// debugger;
 			this._getEmail = oEvent.getSource();
 			new validator().emailValidation(this._getEmail);
 			//this._getFildData(this._getEmail);

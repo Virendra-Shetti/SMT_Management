@@ -3,7 +3,7 @@
 	xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:f="sap.ui.layout.form">
 	<m:App>
 		<m:pages>
-			<m:Page>
+			<m:Page showHeader="false">
 				<m:content>
 					<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true">
 						<headerTitle>
@@ -27,10 +27,10 @@
 									<m:Title text="Header Title On Phone"/>
 								</snappedTitleOnMobile>
 								<actions>
-									<m:OverflowToolbarButton icon="sap-icon://add" text="Emp" press="onPressAddEmp"/>
-									<m:OverflowToolbarButton icon="sap-icon://add" text="EVent" press="onPressAddEvent"/>
-									<m:OverflowToolbarButton icon="sap-icon://message-popup" press="onPressNotification"/>
-									<m:OverflowToolbarButton icon="sap-icon://log" press="onPressLogout"/>
+									<m:Button icon="sap-icon://nav-back" press="onPressLogout"/>
+									<m:Button icon="sap-icon://add" text="Emp" press="onPressAddEmp"/>
+									<m:Button icon="sap-icon://add" text="EVent" press="onPressAddEvent"/>
+									<m:Button icon="sap-icon://message-popup" press="onPressNotification"/>
 								</actions>
 							</ObjectPageDynamicHeaderTitle>
 						</headerTitle>

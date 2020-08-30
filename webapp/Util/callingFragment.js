@@ -5,6 +5,7 @@ sap.ui.define([
 	function (Controller, UIComponent) {
 		"use strict";
 		return Controller.extend("MT.SMT_Managment.Util.callingFragment", {
+
 			callFragment : {
 				createEvent : function(){
 					
@@ -37,12 +38,8 @@ sap.ui.define([
 		}
 			}
 			
-		
-		
-		
-		
-			
 		});
 		});
+
 
 

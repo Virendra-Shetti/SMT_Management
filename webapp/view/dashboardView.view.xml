@@ -1,10 +1,10 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="MT.SMT_Managment.controller.dashboardView" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f"
 	xmlns:card="sap.f.cards">
-	<App >
-		<pages>
+	<App>
+		<pages >
 			<Page showHeader="false">
-				<content>
+				<content >
 					<!--<tnt:ToolHeader>-->
 					<!--	<Text text="attendance summary - Aug 17 to Aug 23"/>-->
 					<!--	<tnt:ToolHeaderUtilitySeparator/>-->
@@ -19,16 +19,18 @@
 					<!--		</layoutData>-->
 					<!--	</Button>-->
 					<!--</tnt:ToolHeader>-->
-					<tnt:ToolHeader>
-						<ToolbarSpacer width="1em"/>
-						<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>
-						<Text text="attendance summary - Aug 17 to Aug 23"/>
-						<ToolbarSpacer/>
-						<Text class="headerText" text="{i18n>headerSigniwis}" />
-						<ToolbarSpacer/>
-						<Button type="Transparent" press="onPress" icon="sap-icon://bell" tooltip="{i18n>notify}"/>
-						<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}"/>
-					</tnt:ToolHeader>
+
+					<!--<tnt:ToolHeader>-->
+					<!--	<ToolbarSpacer width="1em"/>-->
+					<!--	<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>-->
+					<!--	<Text text="attendance summary - Aug 17 to Aug 23"/>-->
+					<!--	<ToolbarSpacer/>-->
+					<!--	<Text class="headerText" text="{i18n>headerSigniwis}"/>-->
+					<!--	<ToolbarSpacer/>-->
+					<!--	<Button type="Transparent" press="onPress" icon="sap-icon://bell" tooltip="{i18n>notify}"/>-->
+					<!--	<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}"/>-->
+					<!--</tnt:ToolHeader>-->
+
 				</content>
 				<Toolbar width="100%" height="1px"/>
 				<l:Grid defaultSpan="XL2 L2 M3 S12" class="sapUiMediumMarginTop sapUiLargeMarginEnd">
@@ -72,7 +74,7 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem type="Navigation" press="Birthday">
+									<ColumnListItem type="Navigation" press="empSalayaNavToFinance">
 										<cells>
 											<!--<Image src="{DOB>image}" width="2em" height="2em"/>-->
 											<Avatar src="{DOB>image}" displaySize="S" showBorder="true"/>

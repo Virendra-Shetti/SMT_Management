@@ -8,6 +8,7 @@ sap.ui.define([
 
 			validateFragFields: {
 
+
 				 "lSid" : ["fNameFId", "lNameFId", "empAdddepFId", "empAddposFId", "empAddEmailId","empAddDOBId", 
 				 "empAddStareId","empAddEndId"],
 				//Function to validate and set the maximum and minimum date.......................
@@ -78,7 +79,7 @@ sap.ui.define([
 						
 				
 
-				
+	
 					}
 					closeMe.close();
 				}
