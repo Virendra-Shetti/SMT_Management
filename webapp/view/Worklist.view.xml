@@ -45,12 +45,12 @@
 					<ColumnListItem type="Navigation" press=".onPress">
 						<cells>
 							<ObjectIdentifier title="{EmpId}"/>
-							<ObjectIdentifier title="{empName}"/>
+							<ObjectIdentifier title="{EmpName}"/>
 							<ObjectIdentifier title="{Department}"/>
-							<ObjectAttribute text="{Email}"/>
-							<ObjectAttribute text="{startDate}"/>
-							<ObjectAttribute text="{endDate}"/>
-							<ObjectAttribute text="{date}"/>
+							<ObjectAttribute text="{EmailId}"/>
+							<ObjectAttribute text="{BasicSalary}"/>
+							<ObjectAttribute text="{phoneNumber}"/>
+							<ObjectAttribute text="{PANNo}"/>
 						</cells>
 					</ColumnListItem>
 				</items>
