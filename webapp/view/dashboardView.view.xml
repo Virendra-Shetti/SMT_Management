@@ -19,6 +19,7 @@
 					<!--		</layoutData>-->
 					<!--	</Button>-->
 					<!--</tnt:ToolHeader>-->
+
 					<!--<tnt:ToolHeader>-->
 					<!--	<ToolbarSpacer width="1em"/>-->
 					<!--	<Image src="http://www.signiwis.com/images/margo.png" width="5em"/>-->
@@ -29,6 +30,7 @@
 					<!--	<Button type="Transparent" press="onPress" icon="sap-icon://bell" tooltip="{i18n>notify}"/>-->
 					<!--	<Button type="Transparent" icon="sap-icon://log" tooltip="{i18n>logoutButton}"/>-->
 					<!--</tnt:ToolHeader>-->
+
 				</content>
 				<Toolbar width="100%" height="1px"/>
 				<l:Grid defaultSpan="XL2 L2 M3 S12" class="sapUiMediumMarginTop sapUiLargeMarginEnd">

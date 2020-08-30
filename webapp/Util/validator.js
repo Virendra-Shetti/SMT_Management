@@ -8,9 +8,9 @@ sap.ui.define([
 
 			validateFragFields: {
 
-				"lSid": ["fNameFId", "lNameFId", "empAdddepFId", "empAddposFId", "empAddEmailId", "empAddDOBId",
-					"empAddStareId", "empAddEndId"
-				],
+
+				 "lSid" : ["fNameFId", "lNameFId", "empAdddepFId", "empAddposFId", "empAddEmailId","empAddDOBId", 
+				 "empAddStareId","empAddEndId"],
 				//Function to validate and set the maximum and minimum date.......................
 				dateField: function () {
 					var that = this.that;
@@ -38,14 +38,14 @@ sap.ui.define([
 					that.getView().byId("empAddStareId").setMinDate(minDate);
 					that.getView().byId("empAddStareId").setMaxDate(maxDate);
 				},
-				releavingDate: function () {
+				releavingDate : function(){
 					var that = this.that;
 					var curDate = new Date();
-					var d = curDate.getDate();
-					var m = curDate.getMonth();
-					var y2 = curDate.getFullYear() + 3;
+			var d = curDate.getDate();
+			var m = curDate.getMonth();
+			var y2 = curDate.getFullYear() + 3;
 
-					that.getView().byId("empAddEndId").setValue(m + ", " + d + ", " + y2);
+			that.getView().byId("empAddEndId").setValue(m + ", " + d + ", " + y2);	
 				},
 				errorValidator: function () {
 					var that = this.that;
@@ -60,23 +60,26 @@ sap.ui.define([
 					}
 				},
 				validFields: function () {
-					var that = this.that;
+						var that = this.that;
 					var vfilds = this.vfilds;
 					debugger;
 					for (var i = 0; i < vfilds.length; i++) {
 						that.getView().byId(vfilds[i]).setValueState("None");
-						//	that.getView().byId(vfilds[i]).showValueStateMessage(false);
+					//	that.getView().byId(vfilds[i]).showValueStateMessage(false);
 					}
 
 				},
-				closeEmpForm: function () {
+				closeEmpForm : function(){
 					var that = this.that;
 					var closeMe = this.fragClose;
 					var ids = this.ids;
-					for (var i = 0; i < ids.length; i++) {
+						for (var i = 0; i < ids.length; i++) {
 						that.getView().byId(ids[i]).setValueState("None");
 						that.getView().byId(ids[i]).setValue("");
+						
+				
 
+	
 					}
 					closeMe.close();
 				}

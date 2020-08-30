@@ -1,3 +1,4 @@
+
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.uxap" controllerName="MT.SMT_Managment.controller.managementView"
 	xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:f="sap.ui.layout.form">
 	<m:App>
