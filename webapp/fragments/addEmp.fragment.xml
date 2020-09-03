@@ -7,15 +7,15 @@
 					<VBox>
 						<Label text="EmpId:"/>
 						<Input id="empAddFId" required="true" width="100%" liveChange="onEmpId" editable="false"/>
-						<Label text="firstName:"/>
+						<Label text="firstName:" required="true"/>
 						<Input id="fNameFId" required="true" width="100%" liveChange="onFname"/>
-						<Label id="lableName" text="LastName:"/>
+						<Label id="lableName" text="LastName:" required="true"/>
 						<Input id="lNameFId" required="true" width="100%" liveChange="onLname"/>
-						<Label text="Department:"/>
+						<Label text="Department:" required="true"/>
 						<Input id="empAdddepFId" required="true" width="100%" liveChange="onDepart"/>
-						<Label text="Position:"/>
+						<Label text="Position:" required="true"/>
 						<Input id="empAddposFId" required="true" width="100%" liveChange="onPos"/>
-						<Label text="Email:"/>
+						<Label text="Email:" required="true"/>
 						<Input id="empAddEmailId" required="true" width="100%" change="onEmail"/>
 						<Label text="Date Of Birth:"/>
 						<DatePicker id="empAddDOBId" placeholder="Enter Date ..." navigate="handleChangeDOB" class="sapUiSmallMarginBottom"/>
